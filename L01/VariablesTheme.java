@@ -147,7 +147,7 @@ public class VariablesTheme {
         varInteger = 123;
         System.out.println(varInteger + " содержит: " +
                 '\n' + varInteger / 100 + " сотен" +
-                '\n' + varInteger / 10 + " десятков" +
+                '\n' + (varInteger % 100) / 10 + " десятков" +
                 '\n' + varInteger % 10 + " единиц");
 
         System.out.println("\n10. Преобразование секунд" +
