@@ -116,15 +116,15 @@ public class VariablesTheme {
         System.out.println("\n7. Произведение и сумма цифр числа\n" +
                 "----------------------------------");
         int srcNumber = 345;
-        byte fig1;
-        byte fig2;
-        byte fig3;
+        byte digit1;
+        byte digit2;
+        byte digit3;
         System.out.println("Число: " + srcNumber);
-        fig1 = (byte) (srcNumber % 10);
-        fig2 = (byte) ((srcNumber % 100) / 10);
-        fig3 = (byte) (srcNumber / 100);
-        System.out.println("Сумма цифр: " + (fig1 + fig2 + fig3));
-        System.out.println("Произведение цифр: " + (fig1 * fig2 * fig3));
+        digit1 = (byte) (srcNumber % 10);
+        digit2 = (byte) ((srcNumber % 100) / 10);
+        digit3 = (byte) (srcNumber / 100);
+        System.out.println("Сумма цифр: " + (digit1 + digit2 + digit3));
+        System.out.println("Произведение цифр: " + (digit1 * digit2 * digit3));
 
         System.out.println("\n8. Вывод на консоль ASCII-арт Дюка\n" +
                 "----------------------------------");
