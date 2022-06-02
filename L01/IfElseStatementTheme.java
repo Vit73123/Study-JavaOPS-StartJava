@@ -66,27 +66,21 @@ public class IfElseStatementTheme {
                 "---------------------------------");
         int srcNumber1 = 324;
         int srcNumber2 = 427;
-        int digit = 0;
+        int digit = -1;
         System.out.println("В числах " + srcNumber1 + " и " + srcNumber2);
         digit = srcNumber1 / 100;
         if (digit == srcNumber2 / 100) {
             System.out.println("одинаковая цифра "+ digit + " стоит в разряде 3");
-            digit = 1;
         }
-        srcNumber1 %= 100;
-        srcNumber2 %= 100;
-        digit = srcNumber1 / 10;
-        if (digit == srcNumber2 / 10) {
+        digit = (srcNumber1 %= 100) / 10;
+        if (digit == (srcNumber2 %= 100) / 10) {
             System.out.println("одинаковая цифра "+ digit + " стоит в разряде 2");
-            digit = 1;
         }
-        srcNumber1 %= 10;
-        srcNumber2 %= 10;
-        if (srcNumber1 == srcNumber2) {
+        digit = srcNumber1 % 10;
+        if (digit == (srcNumber2 % 10)) {
             System.out.println("одинаковая цифра "+ digit + " стоит в разряде 1");
-            digit = 1;
         }
-        if (digit == 0) {
+        if (digit == -1) {
             System.out.println("одинаковых цифр нет");
         }
 
@@ -188,8 +182,7 @@ public class IfElseStatementTheme {
             System.out.println("|\\" + "\n" +
                     "| \\" + "\n" +
                     "|  \\" + "\n" +
-                    "|   \\" + "\n" +
-                    " ___");
+                    "|___\\");
         }
 
         System.out.println("\n10. Подсчёт количества банкнот\n" +
