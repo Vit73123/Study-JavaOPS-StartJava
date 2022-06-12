@@ -35,7 +35,7 @@ public class Calculator {
                 result = num1 % num2;
                 break;
             default:
-                error = 100;
+                error = 3;
         }
         if (error == 0) {
             System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
@@ -47,22 +47,19 @@ public class Calculator {
             case 2:
                 System.out.println("Ошибка: Недопустимое значение степени: " + num2);
                 break;
-            case 100:
+            case 3:
                 System.out.println("Ошибка: Нет операции " + sign);
                 break;
         }
     }
 
     private static int pow(int num, int numPow) {
-        int i;
-        int result = num;
         if (numPow < 0) {
             return 0;
         }
-        if (numPow == 0) {
-            return 1;
-        }
-        for (i = numPow - 1; i > 0; i--) {
+        int i;
+        int result = 1;
+        for (i = numPow; i > 0; i--) {
             result *= num;
         }
         return result;          
