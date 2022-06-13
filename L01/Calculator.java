@@ -57,8 +57,9 @@ public class Calculator {
         if (numPow < 0) {
             return 0;
         }
+        int i;
         int result = 1;
-        for (int i = numPow; i > 0; i--) {
+        for (i = numPow; i > 0; i--) {
             result *= num;
         }
         return result;          

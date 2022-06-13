@@ -3,28 +3,28 @@ public class GuessNumber {
     public static void main(String[] args) {
         final int min = 1;
         final int max = 100;
-        int targetNumber = 100;
-        int playerAnswer;
+        int num = 100;
+        int testNum;
         int left = min;
         int right = max;
         int i = 0;
 
         do {
-            playerAnswer = (left + right) / 2;
-            if (playerAnswer > targetNumber) {
-                System.out.println("Число " + playerAnswer +
+            testNum = (left + right) / 2;
+            if (testNum > num) {
+                System.out.println("Число " + testNum +
                         " больше того, что загадал компьютер " + 
                         " left = " + left + " right = " + right);
-                right = playerAnswer - 1;
-            } else if (playerAnswer < targetNumber) {
-                System.out.println("Число " + playerAnswer +
+                right = testNum - 1;
+            } else if (testNum < num) {
+                System.out.println("Число " + testNum +
                         " меньше того, что загадал компьютер" +
                         " left = " + left + " right = " + right);
-                left = playerAnswer + 1;
+                left = testNum + 1;
             }
             i++;
-        } while(playerAnswer != targetNumber);
-        System.out.println("\nЧисло, которое загадал компьютер: " + playerAnswer);
+        } while ((testNum != num) && (i < 10));
+        System.out.println("\nЧисло, которое загадал компьютер: " + testNum);
         System.out.println("Попыток: " + i);
     }
 }
