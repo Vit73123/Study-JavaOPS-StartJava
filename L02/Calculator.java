@@ -16,30 +16,28 @@ public class Calculator {
     }
 
     public void calculate() {
-        if (!isError()) {
-            int result = 0;
-            switch (sign) {
-                case '+':
-                    result = num1 + num2;
-                    break;
-                case '-':
-                    result = num1 - num2;
-                    break;
-                case '*':
-                    result = num1 * num2;
-                    break;
-                case '/':
-                    result = num1 / num2;
-                    break;
-                case '^':
-                    result = pow(num1, num2);
-                    break;
-                case '%':
-                    result = num1 % num2;
-                    break;
-            }
-            System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
+        int result = 0;
+        switch (sign) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+                break;
+            case '/':
+                result = num1 / num2;
+                break;
+            case '^':
+                result = pow(num1, num2);
+                break;
+            case '%':
+                result = num1 % num2;
+                break;
         }
+        System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 
     private static int pow(int num, int numPow) {
@@ -48,31 +46,5 @@ public class Calculator {
             result *= num;
         }
         return result;          
-    }
-
-    private boolean isError() {
-        boolean check = false;
-        switch (sign) {
-            case '+': break;
-            case '-': break;
-            case '*': break;
-            case '/':
-                if (num2 == 0) {
-                    System.out.println("Ошибка: Деление на ноль");
-                    check = true;
-                }
-                break;
-            case '^':
-                if (num2 < 0) {
-                    System.out.println("Ошибка: Недопустимое значение степени: " + num2);
-                    check = true;
-                }
-                break;
-            case '%': break;
-            default:
-                System.out.println("Ошибка: Нет операции " + sign);
-                check = true;
-        }
-        return check;
     }
 }
