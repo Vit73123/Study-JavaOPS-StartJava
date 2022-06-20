@@ -16,7 +16,7 @@ public class Calculator {
     }
 
     public void calculate() {
-        if (! isError()) {
+        if (!isError()) {
             int result = 0;
             switch (sign) {
                 case '+':
