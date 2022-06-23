@@ -20,10 +20,7 @@ public class GuessNumber {
         do {
             if (yesNo.equals("yes") && (checkNumber(player1) || checkNumber(player2))) {
                 yesNo = "no";
-            } /*else {
-                System.out.print("\nПродолжить игру? ");
-                yesNo = scan.nextLine();
-            }*/
+            }
         } while (!yesNo.equals("no"));
 
     }
