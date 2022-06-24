@@ -14,26 +14,21 @@ public class GuessNumber {
 
     public void play() {
         Scanner scan = new Scanner(System.in);
-        String yesNo = "yes";
 
         targetNumber = min + (int) (Math.random() * max);
-        do {
-            if (yesNo.equals("yes") && (checkNumber(player1) || checkNumber(player2))) {
-                yesNo = "no";
-            }
-        } while (!yesNo.equals("no"));
+        while (!(isGuessed(player1) || isGuessed(player2)));
 
     }
 
-    private boolean checkNumber(Player player) {
+    private boolean isGuessed(Player player) {
         Scanner scan = new Scanner(System.in);
         System.out.print(player.getName() + ", Ваше число? ");
         player.setNumber(scan.nextInt());
-        if ((player.getNumber()) == targetNumber) {
+        if (player.getNumber() == targetNumber) {
             System.out.println(player2.getName() + ", Вы угадали!");
             return true;
         }
-        if ((player.getNumber()) < targetNumber) {
+        if (player.getNumber() < targetNumber) {
             System.out.println("Число " + player.getNumber() +
                     " меньше того, что загадал компьютер");
         } else {
