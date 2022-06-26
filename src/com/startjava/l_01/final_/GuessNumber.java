@@ -1,3 +1,5 @@
+package com.startjava.l_01.final_;
+
 public class GuessNumber {
 
     public static void main(String[] args) {

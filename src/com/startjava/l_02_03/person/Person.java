@@ -1,3 +1,5 @@
+package com.startjava.l_02_03.person;
+
 public class Person {
     char gender = 'М';
     String name = "Сергей";

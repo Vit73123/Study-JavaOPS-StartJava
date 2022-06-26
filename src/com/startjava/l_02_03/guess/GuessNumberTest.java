@@ -1,3 +1,5 @@
+package com.startjava.l_02_03.guess;
+
 import java.util.Scanner;
 
 class GuessNumberTest {

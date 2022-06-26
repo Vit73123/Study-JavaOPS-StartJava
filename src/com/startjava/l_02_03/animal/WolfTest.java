@@ -1,3 +1,5 @@
+package com.startjava.l_02_03.animal;
+
 public class WolfTest {
 
     public static void main(String[] args) {
