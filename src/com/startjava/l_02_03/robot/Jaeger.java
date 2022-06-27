@@ -1,26 +1,27 @@
-/*  Jaeger v1.1 220620
+/*
+ * Jaeger v1.1 220620
  *
- *  Поля Jaeger:
- *  String modelName;
- *  String mark;
- *  String origin;
- *  float height;
- *  float weight;
- *  int strength;
- *  int armor;
- *  String weapons;     Добавлен v 1.1
- *  int pilotsNumber;   Добавлен v 1.1
- *  String[] pilots;    Добавлен v 1.1
+ * Поля Jaeger:
+ * String modelName;
+ * String mark;
+ * String origin;
+ * float height;
+ * float weight;
+ * int strength;
+ * int armor;
+ * String weapons;      Добавлен v 1.1
+ * int pilotsNumber;    Добавлен v 1.1
+ * String[] pilots;     Добавлен v 1.1
  *
- *  Методы Jaeger:
- *  boolean drift()
- *  boolean stopDrift()
- *  move()
- *  scanKaiju()
- *  useVortexCannon()
- *  strike()            Добавлен v 1.1
- *  roll()              Добавлен v 1.1 */
-
+ * Методы Jaeger:
+ * boolean drift()
+ * boolean stopDrift()
+ * move()
+ * scanKaiju()
+ * useVortexCannon()
+ * strike()             Добавлен v 1.1
+ * roll()               Добавлен v 1.1 
+ */
 package com.startjava.l_02_03.robot;
 
 public class Jaeger {
@@ -114,7 +115,7 @@ public class Jaeger {
     }
 
     public String scanKaiju() {
-        return "scanning";
+        return "scanning Kaiju";
     }
 
     public void useVortexCannon() {
@@ -127,5 +128,26 @@ public class Jaeger {
 
     public void roll() {
         System.out.println("rolling");
+    }
+
+    public String toString() {
+        String result = "Main { " +
+                "modelName = '" + modelName + '\'' +
+                "mark = '" + mark + '\'' +
+                "origin = '" + origin + '\'' +
+                "height = " + height + '\'' +
+                "weight = " + weight + '\'' +
+                "strength = " + strength + '\'' +
+                "armor = " + armor + " }\n" +
+                "pilots (" + pilots.length + ") = {";
+        for (int i = 0; i < pilots.length; i++) {
+            result = result + pilots[i] + ' ';
+        }
+        result = result + "}\nweapons (" + weapons.length +") = {";
+        for (int i = 0; i < weapons.length; i++) {
+            result = result + weapons[i] + ' ';
+        }
+        result = result + "}";
+        return result;
     }
 }
