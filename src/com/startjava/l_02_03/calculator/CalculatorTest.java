@@ -5,12 +5,12 @@ import java.util.Scanner;
 public class CalculatorTest {
     
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
+        Scanner scan = new Scanner(System.in, "cp866");
         Calculator calc = new Calculator();
-        String yesNo = "yes";
+        String yesNo = "да";
 
         do {
-            if (yesNo.equals("yes")) {
+            if (yesNo.equals("да")) {
                 System.out.print("Введите первое число: ");
                 calc.setNum1(scan.nextInt());
                 System.out.print("Введите знак математической операции: ");
@@ -19,8 +19,9 @@ public class CalculatorTest {
                 calc.setNum2(scan.nextInt());
                 calc.calculate();
             }
-            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-            yesNo = scan.next();            
-        } while (!yesNo.equals("no"));
+            System.out.print("Хотите продолжить вычисления? [да/нет]: ");
+            yesNo = scan.next();
+            System.out.println("\'" + yesNo + "\'");
+        } while (!yesNo.equals("нет"));
     }
 }

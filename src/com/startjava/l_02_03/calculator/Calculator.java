@@ -18,34 +18,34 @@ public class Calculator {
     }
 
     public void calculate() {
-        int result = 0;
         switch (sign) {
             case '+':
-                result = num1 + num2;
+                System.out.println(num1 + num2);
                 break;
             case '-':
-                result = num1 - num2;
+                System.out.println(num1 - num2);
                 break;
             case '*':
-                result = num1 * num2;
+                System.out.println(num1 * num2);
                 break;
             case '/':
-                result = num1 / num2;
+                System.out.println(num1 / num2);
                 break;
             case '^':
-                result = pow(num1, num2);
+                System.out.println(pow());
                 break;
             case '%':
-                result = num1 % num2;
+                System.out.println(num1 % num2);
                 break;
+            default:
+                System.out.println("Ошибка!");
         }
-        System.out.println(num1 + " " + sign + " " + num2 + " = " + result);
     }
 
-    private static int pow(int num, int numPow) {
+    private int pow() {
         int result = 1;
-        for (int i = numPow; i > 0; i--) {
-            result *= num;
+        for (int i = num2; i > 0; i--) {
+            result *= num1;
         }
         return result;          
     }
