@@ -1,6 +1,7 @@
 package com.startjava.l_04;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArrayTheme {
 
@@ -73,6 +74,30 @@ public class ArrayTheme {
                 System.out.println();
             }
             charNumber++;
+        }
+
+        System.out.println("\n\n5. Генерация уникальных чисел\n-----------------------------");
+        Random random = new Random();
+        srcCount = 30;
+        int[] numbersEx5 = new int[srcCount];
+        for (int i = 0; i < srcCount; i++) {
+            numbersEx5[i] = 60 + random.nextInt(41);
+            for (int j = 0; j < i; j++) {
+                if (numbersEx5[j] == numbersEx5[i]) {
+                    i--;
+                    break;
+                }
+            }
+        }
+        Arrays.sort(numbersEx5);
+        int jCount = 0;
+        for (int num : numbersEx5) {
+            System.out.printf("%4d", num);
+            jCount++;
+            if (jCount == 10) {
+                jCount = 0;
+                System.out.println();
+            }
         }
     }
 }
