@@ -9,7 +9,7 @@ public class PersonTest {
         person.go(2);
         person.sit(1);
         person.run(3);
-        person.speak("РџСЂРёРІРµС‚");
+        person.speak("Привет");
         person.learnJava();
     }
 }

@@ -14,19 +14,19 @@ public class GuessNumber {
         do {
             playerAnswer = (left + right) / 2;
             if (playerAnswer > targetNumber) {
-                System.out.println("Р§РёСЃР»Рѕ " + playerAnswer +
-                        " Р±РѕР»СЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ " + 
+                System.out.println("Число " + playerAnswer +
+                        " больше того, что загадал компьютер " + 
                         " left = " + left + " right = " + right);
                 right = playerAnswer - 1;
             } else if (playerAnswer < targetNumber) {
-                System.out.println("Р§РёСЃР»Рѕ " + playerAnswer +
-                        " РјРµРЅСЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ" +
+                System.out.println("Число " + playerAnswer +
+                        " меньше того, что загадал компьютер" +
                         " left = " + left + " right = " + right);
                 left = playerAnswer + 1;
             }
             i++;
         } while(playerAnswer != targetNumber);
-        System.out.println("\nР§РёСЃР»Рѕ, РєРѕС‚РѕСЂРѕРµ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ: " + playerAnswer);
-        System.out.println("РџРѕРїС‹С‚РѕРє: " + i);
+        System.out.println("\nЧисло, которое загадал компьютер: " + playerAnswer);
+        System.out.println("Попыток: " + i);
     }
 }

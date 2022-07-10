@@ -24,18 +24,18 @@ public class GuessNumber {
 
     private boolean isGuessed(Player player) {
         Scanner scan = new Scanner(System.in);
-        System.out.print(player.getName() + ", Р’Р°С€Рµ С‡РёСЃР»Рѕ? ");
+        System.out.print(player.getName() + ", Ваше число? ");
         player.setNumber(scan.nextInt());
         if (player.getNumber() == targetNumber) {
-            System.out.println(player2.getName() + ", Р’С‹ СѓРіР°РґР°Р»Рё!");
+            System.out.println(player2.getName() + ", Вы угадали!");
             return true;
         }
         if (player.getNumber() < targetNumber) {
-            System.out.println("Р§РёСЃР»Рѕ " + player.getNumber() +
-                    " РјРµРЅСЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ");
+            System.out.println("Число " + player.getNumber() +
+                    " меньше того, что загадал компьютер");
         } else {
-            System.out.println("Р§РёСЃР»Рѕ " + player.getNumber() +
-                    " Р±РѕР»СЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ");
+            System.out.println("Число " + player.getNumber() +
+                    " больше того, что загадал компьютер");
         }
         return false;
     }

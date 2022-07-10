@@ -44,13 +44,13 @@ public class Calculator {
         }
         switch (error) {
             case 1:
-                System.out.println("РћС€РёР±РєР°: Р”РµР»РµРЅРёРµ РЅР° РЅРѕР»СЊ");
+                System.out.println("Ошибка: Деление на ноль");
                 break;
             case 2:
-                System.out.println("РћС€РёР±РєР°: РќРµРґРѕРїСѓСЃС‚РёРјРѕРµ Р·РЅР°С‡РµРЅРёРµ СЃС‚РµРїРµРЅРё: " + num2);
+                System.out.println("Ошибка: Недопустимое значение степени: " + num2);
                 break;
             case 3:
-                System.out.println("РћС€РёР±РєР°: РќРµС‚ РѕРїРµСЂР°С†РёРё " + sign);
+                System.out.println("Ошибка: Нет операции " + sign);
                 break;
         }
     }

@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class MyFirstApp {
     public static void main(String[] args) {
         System.out.println("Write once, run anywhere");
-        System.out.println("РќР°РїРёС€Рё РѕРґРЅР°Р¶РґС‹, Р·Р°РїСѓСЃРєР°Р№ РІРµР·РґРµ");
-        Scanner console = new Scanner(System.in, "cp866");
-        System.out.print("Р’РІРµРґРёС‚Рµ СЃРІРѕС‘ РёРјСЏ: ");
+        System.out.println("Напиши однажды, запускай везде");
+        Scanner console = new Scanner(System.in, "windows-1251");
+        System.out.print("Введите своё имя: ");
         System.out.println(console.nextLine());
     }
 }

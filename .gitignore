@@ -1,6 +1,10 @@
 out
 doc
+old
+.idea
 *.class
 *.pdf
+*.iml
+*.xml
 arg
 argj

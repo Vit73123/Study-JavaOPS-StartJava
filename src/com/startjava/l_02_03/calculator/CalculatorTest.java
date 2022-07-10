@@ -5,23 +5,23 @@ import java.util.Scanner;
 public class CalculatorTest {
     
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in, "cp866");
+        Scanner scan = new Scanner(System.in, "windows-1251");
         Calculator calc = new Calculator();
-        String yesNo = "РґР°";
+        String yesNo = "да";
 
         do {
-            if (yesNo.equals("РґР°")) {
-                System.out.print("Р’РІРµРґРёС‚Рµ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ: ");
+            if (yesNo.equals("да")) {
+                System.out.print("Введите первое число: ");
                 calc.setNum1(scan.nextInt());
-                System.out.print("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё: ");
+                System.out.print("Введите знак математической операции: ");
                 calc.setSign(scan.next().charAt(0));
-                System.out.print("Р’РІРµРґРёС‚Рµ РІС‚РѕСЂРѕРµ С‡РёСЃР»Рѕ: ");
+                System.out.print("Введите второе число: ");
                 calc.setNum2(scan.nextInt());
                 calc.calculate();
             }
-            System.out.print("РҐРѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ? [РґР°/РЅРµС‚]: ");
+            System.out.print("Хотите продолжить вычисления? [да/нет]: ");
             yesNo = scan.next();
             System.out.println("\'" + yesNo + "\'");
-        } while (!yesNo.equals("РЅРµС‚"));
+        } while (!yesNo.equals("нет"));
     }
 }

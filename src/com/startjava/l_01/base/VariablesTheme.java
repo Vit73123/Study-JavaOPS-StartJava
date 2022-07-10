@@ -3,132 +3,132 @@ package com.startjava.l_01.base;
 public class VariablesTheme {
 
     public static void main(String[] args) {
-        System.out.println("\n1. РЎРѕР·РґР°РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹С… Рё РІС‹РІРѕРґ РёС… Р·РЅР°С‡РµРЅРёР№ РЅР° РєРѕРЅСЃРѕР»СЊ\n" +
+        System.out.println("\n1. Создание переменных и вывод их значений на консоль\n" +
                 "-----------------------------------------------------");
         byte cpuCores = 12;
-        System.out.println("CPU РљРѕР»РёС‡РµСЃС‚РІРѕ СЏРґРµСЂ: " + cpuCores);
+        System.out.println("CPU Количество ядер: " + cpuCores);
         float cpuFreq = 3.33F;
-        System.out.println("CPU Р§Р°СЃС‚РѕС‚Р°: " + cpuFreq + " Р“Р“С†");
+        System.out.println("CPU Частота: " + cpuFreq + " ГГц");
         short ram = 8_192;
-        System.out.println("РћРїРµСЂР°С‚РёРІРЅР°СЏ РїР°РјСЏС‚СЊ: " + ram + " РњР‘");
+        System.out.println("Оперативная память: " + ram + " МБ");
         int vram = 24_569;
-        System.out.println("Р’РёРґРµРѕРїР°РјСЏС‚СЊ: " + vram + " РњР‘");
+        System.out.println("Видеопамять: " + vram + " МБ");
         double hddTotal = 11158.2D;
-        System.out.println("Р”РёСЃРєРѕРІРѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ: " + hddTotal + " Р“Р‘");
+        System.out.println("Дисковое пространство: " + hddTotal + " ГБ");
         boolean hasSoundCard = true;
-        System.out.println("Р—РІСѓРєРѕРІР°СЏ РєР°СЂС‚Р° (РµСЃС‚СЊ / РЅРµС‚): " + hasSoundCard);
-        System.out.println("\nР”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ:");
+        System.out.println("Звуковая карта (есть / нет): " + hasSoundCard);
+        System.out.println("\nДополнительная информация:");
         char grade = 'A';
-        System.out.println("\nРћС†РµРЅРєР° РїСЂРѕРёР·РІРѕРґРёС‚РµР»СЊРЅРѕСЃС‚Рё A-F: " + grade);
+        System.out.println("\nОценка производительности A-F: " + grade);
         long anyData = 0L;
-        System.out.println("Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ: " + anyData);
+        System.out.println("Дополнительные данные: " + anyData);
     
-        System.out.println("\n2. Р Р°СЃС‡С‘С‚ СЃС‚РѕРёРјРѕСЃС‚Рё С‚РѕРІР°СЂР° СЃРѕ СЃРєРёРґРєРѕР№\n" +
+        System.out.println("\n2. Расчёт стоимости товара со скидкой\n" +
                 "-------------------------------------");
         float priceX = 100;
         float priceY = 200;
-        System.out.println("РЎСѓРјРјР° СЃРєРёРґРєРё : " + ((priceX + priceY) * 0.11F));
-        System.out.println("РЎС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂРѕРІ СЃРѕ СЃРєРёРґРєРѕР№ : " + 
+        System.out.println("Сумма скидки : " + ((priceX + priceY) * 0.11F));
+        System.out.println("Стоимость товаров со скидкой : " + 
                 ((priceX + priceY) * (1 - 0.11F)));
 
-        System.out.println("\n3. Р’С‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ СЃР»РѕРІР° JAVA\n" +
+        System.out.println("\n3. Вывод на консоль слова JAVA\n" +
                 "------------------------------");
         System.out.println("   J    a  V     V  a" +
                 "\n   J   a a  V   V  a a" +
                 "\nJ  J  aaaaa  V V  aaaaa" +
                 "\n JJ  a     a  V  a     a");
 
-        System.out.println("\n4. РћС‚РѕР±СЂР°Р¶РµРЅРёРµ min Рё max Р·РЅР°С‡РµРЅРёР№ С‡РёСЃР»РѕРІС‹С… С‚РёРїРѕРІ РґР°РЅРЅС‹С…\n" +
+        System.out.println("\n4. Отображение min и max значений числовых типов данных\n" +
                 "-------------------------------------------------------");
         byte varByte = Byte.MAX_VALUE;
         short varShort = Short.MAX_VALUE;
         int varInteger = Integer.MAX_VALUE;
         long varLong = Long.MAX_VALUE;
-        System.out.println("РџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° byte: ");
-        System.out.println("РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: " + varByte);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РёРЅРєСЂРµРјРµРЅС‚Р°: " + ++varByte);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РґРµРєСЂРµРјРµРЅС‚Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°: " + --varByte);
-        System.out.println("\nРџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° short: ");
-        System.out.println("РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: " + varShort);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РёРЅРєСЂРµРјРµРЅС‚Р°: " + ++varShort);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РґРµРєСЂРµРјРµРЅС‚Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°: " + --varShort);
-        System.out.println("\nРџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° integer: ");
-        System.out.println("РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: " + varInteger);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РёРЅРєСЂРµРјРµРЅС‚Р°: " + ++varInteger);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РґРµРєСЂРµРјРµРЅС‚Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°: " + --varInteger);
-        System.out.println("\nРџРµСЂРµРјРµРЅРЅР°СЏ С‚РёРїР° long: ");
-        System.out.println("РџРµСЂРІРѕРЅР°С‡Р°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ: " + varLong);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РёРЅРєСЂРµРјРµРЅС‚Р°: " + ++varLong);
-        System.out.println("Р—РЅР°С‡РµРЅРёРµ РїРѕСЃР»Рµ РґРµРєСЂРµРјРµРЅС‚Р° СЂРµР·СѓР»СЊС‚Р°С‚Р°: " + --varLong);
+        System.out.println("Переменная типа byte: ");
+        System.out.println("Первоначальное значение: " + varByte);
+        System.out.println("Значение после инкремента: " + ++varByte);
+        System.out.println("Значение после декремента результата: " + --varByte);
+        System.out.println("\nПеременная типа short: ");
+        System.out.println("Первоначальное значение: " + varShort);
+        System.out.println("Значение после инкремента: " + ++varShort);
+        System.out.println("Значение после декремента результата: " + --varShort);
+        System.out.println("\nПеременная типа integer: ");
+        System.out.println("Первоначальное значение: " + varInteger);
+        System.out.println("Значение после инкремента: " + ++varInteger);
+        System.out.println("Значение после декремента результата: " + --varInteger);
+        System.out.println("\nПеременная типа long: ");
+        System.out.println("Первоначальное значение: " + varLong);
+        System.out.println("Значение после инкремента: " + ++varLong);
+        System.out.println("Значение после декремента результата: " + --varLong);
 
-        System.out.println("\n5. РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° Р·РЅР°С‡РµРЅРёР№ РїРµСЂРµРјРµРЅРЅС‹С…\n" +
+        System.out.println("\n5. Перестановка значений переменных\n" +
                 "-----------------------------------");
         float number1 = 1;
         float number2 = 2;
         float tmp = 0;
-        System.out.println("РЎРїРѕСЃРѕР± 1 - СЃ РїРѕРјРѕС‰СЊСЋ С‚СЂРµС‚СЊРµР№ РїРµСЂРµРјРµРЅРЅРѕР№:\n" +
-                "РСЃС…РѕРґРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("Способ 1 - с помощью третьей переменной:\n" +
+                "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         tmp = number1;
         number1 = number2;
         number2 = tmp;
-        System.out.println("РќРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         number1 = 1;
         number2 = 2;
-        System.out.println("\nРЎРїРѕСЃРѕР± 2 - СЃ РїРѕРјРѕС‰СЊСЋ Р°СЂРёС„РјРµС‚РёС‡РµСЃРєРёС… РѕРїРµСЂР°С†РёР№:\n" +
-                "РСЃС…РѕРґРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("\nСпособ 2 - с помощью арифметических операций:\n" +
+                "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         number1 += number2;
         number2 = (float) (number1 - number2);
         number1 -= number2;
-        System.out.println("РќРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         number1 = 1;
         number2 = 2;
-        System.out.println("\nРЎРїРѕСЃРѕР± 3 - СЃ РїРѕРјРѕС‰СЊСЋ РїРѕР±РёС‚РѕРІРѕР№ РѕРїРµСЂР°С†РёРё ^:\n" +
-                "РСЃС…РѕРґРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("\nСпособ 3 - с помощью побитовой операции ^:\n" +
+                "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         number1 = (float) ((int) number1 ^ (int) number2);
         number2 = (float) ((int) number1 ^ (int) number2);
         number1 = (float) ((int) number1 ^ (int) number2);
-        System.out.println("РќРѕРІС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…:\n" +
+        System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
 
-        System.out.println("\n6. Р’С‹РІРѕРґ СЃРёРјРІРѕР»РѕРІ Рё РёС… РєРѕРґРѕРІ\n" +
+        System.out.println("\n6. Вывод символов и их кодов\n" +
                 "----------------------------");
         char charCode1 = 35;
         char charCode2 = 38;
         char charCode3 = 64;
         char charCode4 = 94;
         char charCode5 = 95;
-        System.out.println("РљРѕРґ СЃРёРјРІРѕР»Р° - РЎРёРјРІРѕР»" + "\n" +
+        System.out.println("Код символа - Символ" + "\n" +
                 (int) charCode1 + "   " + charCode1 + "\n" +
                 (int) charCode2 + "   " + charCode2 + "\n" +
                 (int) charCode3 + "   " + charCode3 + "\n" +
                 (int) charCode4 + "   " + charCode4 + "\n" +
                 (int) charCode5 + "   " + charCode5);
 
-        System.out.println("\n7. РџСЂРѕРёР·РІРµРґРµРЅРёРµ Рё СЃСѓРјРјР° С†РёС„СЂ С‡РёСЃР»Р°\n" +
+        System.out.println("\n7. Произведение и сумма цифр числа\n" +
                 "----------------------------------");
         int srcNumber = 345;
         byte digit1;
         byte digit2;
         byte digit3;
-        System.out.println("Р§РёСЃР»Рѕ: " + srcNumber);
+        System.out.println("Число: " + srcNumber);
         digit1 = (byte) (srcNumber % 10);
         digit2 = (byte) ((srcNumber % 100) / 10);
         digit3 = (byte) (srcNumber / 100);
-        System.out.println("РЎСѓРјРјР° С†РёС„СЂ: " + (digit1 + digit2 + digit3));
-        System.out.println("РџСЂРѕРёР·РІРµРґРµРЅРёРµ С†РёС„СЂ: " + (digit1 * digit2 * digit3));
+        System.out.println("Сумма цифр: " + (digit1 + digit2 + digit3));
+        System.out.println("Произведение цифр: " + (digit1 * digit2 * digit3));
 
-        System.out.println("\n8. Р’С‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ ASCII-Р°СЂС‚ Р”СЋРєР°\n" +
+        System.out.println("\n8. Вывод на консоль ASCII-арт Дюка\n" +
                 "----------------------------------");
         char space = ' ';
         char slash = '/';
@@ -147,18 +147,18 @@ public class VariablesTheme {
                 slash + underscore + underscore + underscore + underscore + slash +
                 backslash + underscore + underscore + backslash);
 
-        System.out.println("\n9. РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СЃРѕС‚РµРЅ, РґРµСЃСЏС‚РєРѕРІ Рё РµРґРёРЅРёС† С‡РёСЃР»Р°\n" +
+        System.out.println("\n9. Отображение количества сотен, десятков и единиц числа\n" +
                "--------------------------------------------------------");
         srcNumber = 123;
-        System.out.println(srcNumber + " СЃРѕРґРµСЂР¶РёС‚: \n" +
-                srcNumber / 100 + " СЃРѕС‚РµРЅ\n" +
-                (srcNumber % 100) / 10 + " РґРµСЃСЏС‚РєРѕРІ\n" +
-                srcNumber % 10 + " РµРґРёРЅРёС†\n");
+        System.out.println(srcNumber + " содержит: \n" +
+                srcNumber / 100 + " сотен\n" +
+                (srcNumber % 100) / 10 + " десятков\n" +
+                srcNumber % 10 + " единиц\n");
 
-        System.out.println("\n10. РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ СЃРµРєСѓРЅРґ\n" +
+        System.out.println("\n10. Преобразование секунд\n" +
                 "--------------------------------------------------------");
         int totalSeconds = 86_399;
-        System.out.println(totalSeconds + " СЃРµРєСѓРЅРґ: " + (totalSeconds / 3600) + ':' +
+        System.out.println(totalSeconds + " секунд: " + (totalSeconds / 3600) + ':' +
                 ((totalSeconds % 3600) / 60) + ':' + (totalSeconds % 60));
     }
 }

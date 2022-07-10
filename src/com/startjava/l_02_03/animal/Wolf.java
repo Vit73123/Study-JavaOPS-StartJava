@@ -2,14 +2,14 @@ package com.startjava.l_02_03.animal;
 
 public class Wolf {
 
-    /* РџРѕР», РєР»РёС‡РєР°, РІРµСЃ, РІРѕР·СЂР°СЃС‚, РѕРєСЂР°СЃ */
+    /* Пол, кличка, вес, возраст, окрас */
     private String name;
     private char gender;
     private float weight;
     private int age;
     private String colour;
 
-    /* РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ */
+    /* Инициализация */
     public String getName() {
         return name;
     }
@@ -40,7 +40,7 @@ public class Wolf {
 
     public void setAge(int age) {
         if (age > 8) {
-            System.out.println("РћС€РёР±РєР°: Р’РѕР·СЂР°СЃС‚ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 8 Р»РµС‚");
+            System.out.println("Ошибка: Возраст не может быть больше 8 лет");
         } else {
             this.age = age;
         }
@@ -54,20 +54,20 @@ public class Wolf {
         this.colour = colour;
     }
 
-    /* РњРµС‚РѕРґС‹ */
+    /* Методы */
     public void go() {
-        System.out.println("РРґС‘С‚");
+        System.out.println("Идёт");
     }
 
     public void run() {
-        System.out.println("Р‘РµР¶РёС‚");
+        System.out.println("Бежит");
     }
 
     public void howl() {
-        System.out.println("Р’РѕРµС‚");
+        System.out.println("Воет");
     }
 
     public void hunt() {
-        System.out.println("РћС…РѕС‚РёС‚СЃСЏ");
+        System.out.println("Охотится");
     }
 }

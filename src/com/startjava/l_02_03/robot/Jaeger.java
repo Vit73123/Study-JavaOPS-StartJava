@@ -1,7 +1,7 @@
 /*
  * Jaeger v1.1 220620
  *
- * РџРѕР»СЏ Jaeger:
+ * Поля Jaeger:
  * String modelName;
  * String mark;
  * String origin;
@@ -9,18 +9,18 @@
  * float weight;
  * int strength;
  * int armor;
- * String weapons;      Р”РѕР±Р°РІР»РµРЅ v 1.1
- * int pilotsNumber;    Р”РѕР±Р°РІР»РµРЅ v 1.1
- * String[] pilots;     Р”РѕР±Р°РІР»РµРЅ v 1.1
+ * String weapons;      Добавлен v 1.1
+ * int pilotsNumber;    Добавлен v 1.1
+ * String[] pilots;     Добавлен v 1.1
  *
- * РњРµС‚РѕРґС‹ Jaeger:
+ * Методы Jaeger:
  * boolean drift()
  * boolean stopDrift()
  * move()
  * scanKaiju()
  * useVortexCannon()
- * strike()             Р”РѕР±Р°РІР»РµРЅ v 1.1
- * roll()               Р”РѕР±Р°РІР»РµРЅ v 1.1 
+ * strike()             Добавлен v 1.1
+ * roll()               Добавлен v 1.1 
  */
 package com.startjava.l_02_03.robot;
 
