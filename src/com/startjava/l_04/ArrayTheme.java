@@ -99,5 +99,29 @@ public class ArrayTheme {
                 System.out.println();
             }
         }
+
+        System.out.println("\n\n6. Сдвиг элементов массива\n-----------------------------");
+        String[] src = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
+        srcCount = src.length;
+        int dstCount = srcCount;
+        for (int i = 0; i < srcCount; i++) { if (src[i].isBlank()) { dstCount--; } }
+        String[] dst = new String[dstCount];
+        int dstPos = 0;
+        int numStrings = 0;
+        for (int i = 0; i < srcCount; i++) {
+            boolean isEmpty = src[i].isBlank();
+            boolean isEnd = i == (srcCount - 1);
+            if (!isEmpty) { numStrings++; }
+            if ((isEmpty || isEnd) && numStrings > 0) {
+                int srcPos = i - numStrings + (isEnd ? 1 : 0);
+                System.arraycopy(src, srcPos, dst, dstPos, numStrings);
+                if (!isEnd) {
+                    dstPos += numStrings;
+                    numStrings = 0;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(src));
+        System.out.println(Arrays.toString(dst));
     }
 }
