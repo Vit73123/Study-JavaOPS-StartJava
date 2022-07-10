@@ -1,5 +1,7 @@
 package com.startjava.l_04;
 
+import java.util.Arrays;
+
 public class ArrayTheme {
 
     public static void main(String[] args) {
@@ -22,5 +24,18 @@ public class ArrayTheme {
         for (int num : numbersEx1) {
             System.out.print(num + " ");
         }
+
+        System.out.println("\n\n2. Вывод произведения элементов массива\n---------------------------------------");
+        srcCount = 10;
+        int[] numbersEx2 = new int[srcCount];
+        int result = 1;
+        for (int i = 0; i < srcCount; i++) {
+            numbersEx2[i] = i;
+            result *= (numbersEx2[i] != 0 && numbersEx2[i] != 9 ? numbersEx2[i] : 1);
+            System.out.print(numbersEx2[i] != 0 && numbersEx2[i] != 9 ? numbersEx2[i] + " * " : "");
+        }
+        System.out.print("\u0008\u0008" + "= " + result);
+        System.out.println("\nЧисло 0 Индекс " + Arrays.binarySearch(numbersEx2, 0));
+        System.out.println("Число 9 Индекс " + Arrays.binarySearch(numbersEx2, 9));
     }
 }
