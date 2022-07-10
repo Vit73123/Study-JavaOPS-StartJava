@@ -37,5 +37,26 @@ public class ArrayTheme {
         System.out.print("\u0008\u0008" + "= " + result);
         System.out.println("\nЧисло 0 Индекс " + Arrays.binarySearch(numbersEx2, 0));
         System.out.println("Число 9 Индекс " + Arrays.binarySearch(numbersEx2, 9));
+
+        System.out.println("\n3. Удаление элементов массива\n-----------------------------");
+        srcCount = 15;
+        float[] numbersEx3 = new float[srcCount];
+        for (int i = 0; i < srcCount; i++) {
+            numbersEx3[i] = (float) Math.random();
+            if (i == 8) { System.out.println(); }
+            System.out.printf("%8.5f", numbersEx3[i]);
+        }
+        System.out.println('\n');
+        float middleNumber = numbersEx3[srcCount / 2];
+        int zeroNumbersCount = 0;
+        for (int i = 0; i < srcCount; i++) {
+            if (numbersEx3[i] > middleNumber) {
+                numbersEx3[i] = 0;
+                zeroNumbersCount++;
+            }
+            if (i == 8) { System.out.println(); }
+            System.out.printf("%8.5f", numbersEx3[i]);
+        }
+        System.out.println("\n\nКоличество обнулённых яеек " + zeroNumbersCount);
     }
 }
