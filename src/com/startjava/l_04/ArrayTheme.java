@@ -58,5 +58,21 @@ public class ArrayTheme {
             System.out.printf("%8.5f", numbersEx3[i]);
         }
         System.out.println("\n\nКоличество обнулённых яеек " + zeroNumbersCount);
+
+        System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке\n------------------------------------------------------");
+        int charsCount = 'Z' - 'A' + 1;
+        char[] chars = new char[charsCount];
+        for (int i = 0; i < charsCount; i++) { chars[i] = (char) ('A' + i); }
+        int rowNumber = 0;
+        int charNumber = 0;
+        for (int i = 0; i < charsCount; i++) {
+            System.out.print(chars[i]);
+            if (charNumber == rowNumber) {
+                rowNumber++;
+                charNumber = 0;
+                System.out.println();
+            }
+            charNumber++;
+        }
     }
 }
