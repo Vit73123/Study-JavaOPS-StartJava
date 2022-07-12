@@ -11,50 +11,45 @@ public class ArrayTheme {
         printArrayInt(intArr);
         System.out.println();
         for (int i = 0; i < intArr.length / 2; i++) {
-            int iReverse = intArr.length - i - 1;
+            int reverseNumberIndex = intArr.length - i - 1;
             int numTemp = intArr[i];
-            intArr[i] = intArr[iReverse];
-            intArr[iReverse] = numTemp;
+            intArr[i] = intArr[reverseNumberIndex];
+            intArr[reverseNumberIndex] = numTemp;
         }
         printArrayInt(intArr);
 
         System.out.println("\n\n2. Вывод произведения элементов массива\n---------------------------------------");
-        int[] intArrProduct = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        intArr = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         int result = 1;
-        for (int i = 0; i < intArrProduct.length; i++) {
-            intArrProduct[i] = i;
-            result *= (intArrProduct[i] != 0 && intArrProduct[i] != 9 ? intArrProduct[i] : 1);
-            System.out.print(intArrProduct[i] != 0 && intArrProduct[i] != 9 ? intArrProduct[i] + " * " : "");
+        for (int i = 1; i < 9; i++) {
+            result *= intArr[i];
+            System.out.print(intArr[i] + (i < 8 ? " * " : " = "));
         }
-        System.out.print("\u0008\u0008" + "= " + result);
-        System.out.println("\nЧисло 0 Индекс " + Arrays.binarySearch(intArrProduct, 0));
-        System.out.println("Число 9 Индекс " + Arrays.binarySearch(intArrProduct, 9));
+        System.out.print(result);
+        System.out.println("\nЧисла " + intArr[0] + " и " + intArr[9] + " исключаются");
 
         System.out.println("\n3. Удаление элементов массива\n-----------------------------\n");
         int len = 15;
-        float[] floatArr = new float[len];
+        double[] doubleArr = new double[len];
         for (int i = 0; i < len; i++) {
-            floatArr[i] = (float) Math.random();
+            doubleArr[i] = (float) Math.random();
         }
-        printArrayDouble(floatArr, "%8.5f", 8);
-        System.out.println('\n');
-        float middleNumber = floatArr[len / 2];
+        printArrayDouble(doubleArr, "%8.5f", 8);
+        double middleNumber = doubleArr[len / 2];
         int zeroNumbersCount = 0;
         for (int i = 0; i < len; i++) {
-            if (floatArr[i] > middleNumber) {
-                floatArr[i] = 0;
+            if (doubleArr[i] > middleNumber) {
+                doubleArr[i] = 0;
                 zeroNumbersCount++;
             }
         }
-        printArrayDouble(floatArr, "%8.5f", 8);
-        System.out.println("\n\nКоличество обнулённых яеек " + zeroNumbersCount);
+        printArrayDouble(doubleArr, "%8.5f", 8);
+        System.out.println("Количество обнулённых яеек " + zeroNumbersCount);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке\n------------------------------------------------------");
         int charsCount = 'Z' - 'A' + 1;
         char[] chars = new char[charsCount];
-        for (int i = 0; i < charsCount; i++) {
-            chars[i] = (char) ('A' + i);
-        }
+        for (int i = 0; i < charsCount; i++) chars[i] = (char) ('A' + i);
         int rowNumber = 0;
         int charNumber = 0;
         for (int i = 0; i < charsCount; i++) {
@@ -70,54 +65,46 @@ public class ArrayTheme {
         System.out.println("\n\n5. Генерация уникальных чисел\n-----------------------------");
         Random random = new Random();
         len = 30;
-        int[] intArrRandom = new int[len];
+        intArr = new int[len];
         for (int i = 0; i < len; i++) {
-            intArrRandom[i] = 60 + random.nextInt(41);
+            intArr[i] = 60 + random.nextInt(41);
             for (int j = 0; j < i; j++) {
-                if (intArrRandom[j] == intArrRandom[i]) {
+                if (intArr[j] == intArr[i]) {
                     i--;
                     break;
                 }
             }
         }
-        Arrays.sort(intArrRandom);
-        printArrayInt(intArrRandom, "%4d", 10);
+        Arrays.sort(intArr);
+        printArrayInt(intArr, "%4d", 10);
 
-        System.out.println("\n\n6. Сдвиг элементов массива\n-----------------------------");
-        String[] src = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
-        len = src.length;
+        System.out.println("\n6. Сдвиг элементов массива\n-----------------------------");
+        String[] srcArr = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
+        len = srcArr.length;
         int dstCount = len;
-        for (int i = 0; i < len; i++) {
-            if (src[i].isBlank()) {
-                dstCount--;
-            }
-        }
-        String[] dst = new String[dstCount];
+        for (int i = 0; i < len; i++) { if (srcArr[i].isBlank()) { dstCount--; } }
+        String[] dstArr = new String[dstCount];
         int dstPos = 0;
         int numStrings = 0;
         for (int i = 0; i < len; i++) {
-            boolean isEmpty = src[i].isBlank();
+            boolean isEmpty = srcArr[i].isBlank();
             boolean isEnd = i == (len - 1);
-            if (!isEmpty) {
-                numStrings++;
-            }
+            if (!isEmpty) { numStrings++; }
             if ((isEmpty || isEnd) && numStrings > 0) {
                 int srcPos = i - numStrings + (isEnd ? 1 : 0);
-                System.arraycopy(src, srcPos, dst, dstPos, numStrings);
+                System.arraycopy(srcArr, srcPos, dstArr, dstPos, numStrings);
                 if (!isEnd) {
                     dstPos += numStrings;
                     numStrings = 0;
                 }
             }
         }
-        System.out.println(Arrays.toString(src));
-        System.out.println(Arrays.toString(dst));
+        System.out.println(Arrays.toString(srcArr));
+        System.out.println(Arrays.toString(dstArr));
     }
 
     private static void printArrayInt(int[] ints) {
-        for (int num : ints) {
-            System.out.print(num + " ");
-        }
+        for (int num : ints) System.out.print(num + " ");
     }
 
     private static void printArrayInt(int[] ints, String fString, int fCols) {
@@ -133,7 +120,7 @@ public class ArrayTheme {
         }
     }
 
-    private static void printArrayDouble(float[] doubles, String fString, int fCols) {
+    private static void printArrayDouble(double[] doubles, String fString, int fCols) {
         fCols = fCols > 0 ? fCols : doubles.length;
         int i = 0;
         for (double num : doubles) {
@@ -144,5 +131,6 @@ public class ArrayTheme {
                 System.out.println();
             }
         }
+        System.out.println('\n');
     }
 }
