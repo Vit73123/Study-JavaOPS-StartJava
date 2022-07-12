@@ -4,18 +4,18 @@ public class WolfTest {
 
     public static void main(String[] args) {
         Wolf wolf = new Wolf();
-        wolf.setName("‘ÛÌÚËÍ");
-        wolf.setGender('Ã');
+        wolf.setName("–§—É–Ω—Ç–∏–∫");
+        wolf.setGender('–ú');
         wolf.setWeight(38.5f);
         wolf.setAge(15);
-        wolf.setColour("ÒÂ˚È");
+        wolf.setColour("—Å–µ—Ä—ã–π");
 
-        System.out.println("¬ÓÎÍ\n----\n" +
-                "»Ïˇ: " + wolf.getName() + '\n' +
-                "œÓÎ: " + wolf.getGender() + '\n' +
-                "¬ÂÒ: " + wolf.getWeight() + '\n' +
-                "¬ÓÁ‡ÒÚ: " + ((wolf.getAge() > 0) ? wolf.getAge() : "Œ¯Ë·Í‡\n") +
-                "ŒÍ‡Ò: " + wolf.getColour() + '\n');
+        System.out.println("–í–æ–ª–∫\n----\n" +
+                "–ò–º—è: " + wolf.getName() + '\n' +
+                "–ü–æ–ª: " + wolf.getGender() + '\n' +
+                "–í–µ—Å: " + wolf.getWeight() + '\n' +
+                "–í–æ–∑—Ä–∞—Å—Ç: " + ((wolf.getAge() > 0) ? wolf.getAge() : "–û—à–∏–±–∫–∞\n") +
+                "–û–∫—Ä–∞—Å: " + wolf.getColour() + '\n');
         wolf.go();
         wolf.run();
         wolf.howl();

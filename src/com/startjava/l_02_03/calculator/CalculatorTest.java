@@ -7,21 +7,21 @@ public class CalculatorTest {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in, "windows-1251");
         Calculator calc = new Calculator();
-        String yesNo = "да";
+        String yesNo = "РґР°";
 
         do {
-            if (yesNo.equals("да")) {
-                System.out.print("Введите первое число: ");
+            if (yesNo.equals("РґР°")) {
+                System.out.print("Р’РІРµРґРёС‚Рµ РїРµСЂРІРѕРµ С‡РёСЃР»Рѕ: ");
                 calc.setNum1(scan.nextInt());
-                System.out.print("Введите знак математической операции: ");
+                System.out.print("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє РјР°С‚РµРјР°С‚РёС‡РµСЃРєРѕР№ РѕРїРµСЂР°С†РёРё: ");
                 calc.setSign(scan.next().charAt(0));
-                System.out.print("Введите второе число: ");
+                System.out.print("Р’РІРµРґРёС‚Рµ РІС‚РѕСЂРѕРµ С‡РёСЃР»Рѕ: ");
                 calc.setNum2(scan.nextInt());
                 calc.calculate();
             }
-            System.out.print("Хотите продолжить вычисления? [да/нет]: ");
+            System.out.print("РҐРѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІС‹С‡РёСЃР»РµРЅРёСЏ? [РґР°/РЅРµС‚]: ");
             yesNo = scan.next();
             System.out.println("\'" + yesNo + "\'");
-        } while (!yesNo.equals("нет"));
+        } while (!yesNo.equals("РЅРµС‚"));
     }
 }

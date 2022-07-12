@@ -1,29 +1,29 @@
 package com.startjava.l_02_03.person;
 
 public class Person {
-    char gender = 'М';
-    String name = "Сергей";
+    char gender = 'Рњ';
+    String name = "РЎРµСЂРіРµР№";
     float height = 180F;
     float weight = 93.5F;
     int age = 23;
 
     void go(double distance) {
-        System.out.println("Иду " + distance + " километров");
+        System.out.println("РРґСѓ " + distance + " РєРёР»РѕРјРµС‚СЂРѕРІ");
     }
 
     void sit(double time) {
-        System.out.println("Сижу " + time + " часов");
+        System.out.println("РЎРёР¶Сѓ " + time + " С‡Р°СЃРѕРІ");
     }
 
     void run(double distance) {
-        System.out.println("Бегу " + distance + " километров");
+        System.out.println("Р‘РµРіСѓ " + distance + " РєРёР»РѕРјРµС‚СЂРѕРІ");
     }
 
     void speak(String words) {
-        System.out.println("Говорю " + words);
+        System.out.println("Р“РѕРІРѕСЂСЋ " + words);
     }
 
     void learnJava() {
-        System.out.println("Учу Java");
+        System.out.println("РЈС‡Сѓ Java");
     }
 }

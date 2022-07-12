@@ -7,19 +7,19 @@ class GuessNumberTest {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in, "windows-1251");
 
-        System.out.print("\nВведите имя игрока 1: ");
+        System.out.print("\nР’РІРµРґРёС‚Рµ РёРјСЏ РёРіСЂРѕРєР° 1: ");
         Player player1 = new Player(scan.nextLine());
-        System.out.print("Введите имя игрока 2: ");
+        System.out.print("Р’РІРµРґРёС‚Рµ РёРјСЏ РёРіСЂРѕРєР° 2: ");
         Player player2 = new Player(scan.nextLine());
         GuessNumber guessNumber = new GuessNumber(player1, player2);
 
-        String yesNo = "да";
+        String yesNo = "РґР°";
         do {
-            if (yesNo.equals("да")) {
+            if (yesNo.equals("РґР°")) {
                 guessNumber.play();
             }
-            System.out.print("\nНовая игра [да/нет]? ");
+            System.out.print("\nРќРѕРІР°СЏ РёРіСЂР° [РґР°/РЅРµС‚]? ");
             yesNo = scan.nextLine();
-        } while (!yesNo.equals("нет"));
+        } while (!yesNo.equals("РЅРµС‚"));
     }
 }

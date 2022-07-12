@@ -1,106 +1,106 @@
 package com.startjava.l_01.base;
 
 public class IfElseStatementTheme {
-    
+
     public static void main(String[] args) {
-        System.out.println("\n1. Перевод псевдокода на язык Java\n" +
+        System.out.println("\n1. РџРµСЂРµРІРѕРґ РїСЃРµРІРґРѕРєРѕРґР° РЅР° СЏР·С‹Рє Java\n" +
                 "----------------------------------");
         int age = 30;
-        System.out.println("Возраст: " + age);
+        System.out.println("Р’РѕР·СЂР°СЃС‚: " + age);
         if (age > 20) {
-            System.out.println("Возраст больше 20 лет");
+            System.out.println("Р’РѕР·СЂР°СЃС‚ Р±РѕР»СЊС€Рµ 20 Р»РµС‚");
         } else {
-            System.out.println("Возраст до 20 лет\n");
+            System.out.println("Р’РѕР·СЂР°СЃС‚ РґРѕ 20 Р»РµС‚\n");
         }
         char gender = 'M';
-        System.out.println("Пол: " + gender);
+        System.out.println("РџРѕР»: " + gender);
         if (gender != 'M') {
-            System.out.println("Пол должен быть мужской\n");
+            System.out.println("РџРѕР» РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РјСѓР¶СЃРєРѕР№\n");
         }
         float height = 1.58F;
-        System.out.println("Рост: " + height);
+        System.out.println("Р РѕСЃС‚: " + height);
         if (height < 1.8F) {
-            System.out.println("Рост меньше 1,8 м\n");
+            System.out.println("Р РѕСЃС‚ РјРµРЅСЊС€Рµ 1,8 Рј\n");
         } else {
-            System.out.println("Рост не менее 1,8 м\n");
+            System.out.println("Р РѕСЃС‚ РЅРµ РјРµРЅРµРµ 1,8 Рј\n");
         }
         String name = "Anyname";
         char firstLetterName = name.charAt(0);
-        System.out.println("Имя: " + name);
+        System.out.println("РРјСЏ: " + name);
         if (firstLetterName == 'M') {
-            System.out.println("Первая буква имени не \'М\'");
+            System.out.println("РџРµСЂРІР°СЏ Р±СѓРєРІР° РёРјРµРЅРё РЅРµ \'Рњ\'");
         } else if (firstLetterName == 'I') {
-            System.out.println("Первая буква имени не \'I\'");
+            System.out.println("РџРµСЂРІР°СЏ Р±СѓРєРІР° РёРјРµРЅРё РЅРµ \'I\'");
         } else {
-            System.out.println("Подберите другое имя");
+            System.out.println("РџРѕРґР±РµСЂРёС‚Рµ РґСЂСѓРіРѕРµ РёРјСЏ");
         }
 
-        System.out.println("\n2. Поиск max и min числа\n" +
+        System.out.println("\n2. РџРѕРёСЃРє max Рё min С‡РёСЃР»Р°\n" +
                 "------------------------");
         double number1 = 35.4;
         double number2 = 45;
-        System.out.println("Числа: " + number1 + ", " + number2);
+        System.out.println("Р§РёСЃР»Р°: " + number1 + ", " + number2);
         if (number1 > number2) {
             System.out.println("Max: " + number1 + "; Min - " + number2);
         } else if (number1 < number2) {
             System.out.println("Max - " + number2 + "; Min - " + number1);
         }
 
-        System.out.println("\n3. Работа с числом\n" +
+        System.out.println("\n3. Р Р°Р±РѕС‚Р° СЃ С‡РёСЃР»РѕРј\n" +
                 "------------------");
         int number = -33;
         if (number == 0) {
-            System.out.println("Число " + number + " - ноль");
+            System.out.println("Р§РёСЃР»Рѕ " + number + " - РЅРѕР»СЊ");
         } else {
             if ((number % 2) == 0) {
-                System.out.println("Число " + number + " - чётное");
+                System.out.println("Р§РёСЃР»Рѕ " + number + " - С‡С‘С‚РЅРѕРµ");
             } else {
-                System.out.println("Число " + number + " - нечётное");
+                System.out.println("Р§РёСЃР»Рѕ " + number + " - РЅРµС‡С‘С‚РЅРѕРµ");
             }
             if (number < 0) {
-                System.out.println("            и отрицательное");
+                System.out.println("            Рё РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ");
             } else {
-                System.out.println("            и положительное");
+                System.out.println("            Рё РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ");
             }
         }
 
-        System.out.println("\n4. Поиск одинаковых цифр в числах\n" +
+        System.out.println("\n4. РџРѕРёСЃРє РѕРґРёРЅР°РєРѕРІС‹С… С†РёС„СЂ РІ С‡РёСЃР»Р°С…\n" +
                 "---------------------------------");
         int srcNumber1 = 324;
         int srcNumber2 = 427;
         int digit = -1;
-        System.out.println("В числах " + srcNumber1 + " и " + srcNumber2);
+        System.out.println("Р’ С‡РёСЃР»Р°С… " + srcNumber1 + " Рё " + srcNumber2);
         digit = srcNumber1 / 100;
         if (digit == srcNumber2 / 100) {
-            System.out.println("одинаковая цифра "+ digit + " стоит в разряде 3");
+            System.out.println("РѕРґРёРЅР°РєРѕРІР°СЏ С†РёС„СЂР° "+ digit + " СЃС‚РѕРёС‚ РІ СЂР°Р·СЂСЏРґРµ 3");
         }
         digit = (srcNumber1 %= 100) / 10;
         if (digit == (srcNumber2 %= 100) / 10) {
-            System.out.println("одинаковая цифра "+ digit + " стоит в разряде 2");
+            System.out.println("РѕРґРёРЅР°РєРѕРІР°СЏ С†РёС„СЂР° "+ digit + " СЃС‚РѕРёС‚ РІ СЂР°Р·СЂСЏРґРµ 2");
         }
         digit = srcNumber1 % 10;
         if (digit == (srcNumber2 % 10)) {
-            System.out.println("одинаковая цифра "+ digit + " стоит в разряде 1");
+            System.out.println("РѕРґРёРЅР°РєРѕРІР°СЏ С†РёС„СЂР° "+ digit + " СЃС‚РѕРёС‚ РІ СЂР°Р·СЂСЏРґРµ 1");
         }
         if (digit == -1) {
-            System.out.println("одинаковых цифр нет");
+            System.out.println("РѕРґРёРЅР°РєРѕРІС‹С… С†РёС„СЂ РЅРµС‚");
         }
 
-        System.out.println("\n5. Определение буквы, числа или символа по их коду\n" +
+        System.out.println("\n5. РћРїСЂРµРґРµР»РµРЅРёРµ Р±СѓРєРІС‹, С‡РёСЃР»Р° РёР»Рё СЃРёРјРІРѕР»Р° РїРѕ РёС… РєРѕРґСѓ\n" +
                 "--------------------------------------------------");
         char srcChar = '\u0057';
-        System.out.println("Символ " + srcChar + " - ");
+        System.out.println("РЎРёРјРІРѕР» " + srcChar + " - ");
         if ((srcChar >= 'A') && (srcChar <= 'Z')) {
-            System.out.println("большая буква");
+            System.out.println("Р±РѕР»СЊС€Р°СЏ Р±СѓРєРІР°");
         } else if ((srcChar >= 'a') && (srcChar <= 'z')) {
-            System.out.println("маленькая буква");
+            System.out.println("РјР°Р»РµРЅСЊРєР°СЏ Р±СѓРєРІР°");
         } else if ((srcChar >= '0') && (srcChar <= '9')) {
-            System.out.println("число");
+            System.out.println("С‡РёСЃР»Рѕ");
         } else {
-            System.out.println("не буква и не число");
+            System.out.println("РЅРµ Р±СѓРєРІР° Рё РЅРµ С‡РёСЃР»Рѕ");
         }
 
-        System.out.println("\n6. Определение суммы вклада и начисленных банком %\n" +
+        System.out.println("\n6. РћРїСЂРµРґРµР»РµРЅРёРµ СЃСѓРјРјС‹ РІРєР»Р°РґР° Рё РЅР°С‡РёСЃР»РµРЅРЅС‹С… Р±Р°РЅРєРѕРј %\n" +
                 "--------------------------------------------------");
         double deposit = 300_000.0;
         double percent;
@@ -111,10 +111,10 @@ public class IfElseStatementTheme {
         } else {
             percent = 1.1;
         }
-        System.out.println("Начисленный процент: " + String.format("%.2f", percent));
-        System.out.println("Итоговая сумма: " + String.format("%,.2f", deposit * percent));
-    
-        System.out.println("\n7. Определение оценки по предметам\n" +
+        System.out.println("РќР°С‡РёСЃР»РµРЅРЅС‹Р№ РїСЂРѕС†РµРЅС‚: " + String.format("%.2f", percent));
+        System.out.println("РС‚РѕРіРѕРІР°СЏ СЃСѓРјРјР°: " + String.format("%,.2f", deposit * percent));
+
+        System.out.println("\n7. РћРїСЂРµРґРµР»РµРЅРёРµ РѕС†РµРЅРєРё РїРѕ РїСЂРµРґРјРµС‚Р°Рј\n" +
                 "----------------------------------");
         float gradeHistory = 59;
         float gradeProgramming = 91;
@@ -138,14 +138,14 @@ public class IfElseStatementTheme {
         } else {
             markProgramming = 2;
         }
-        System.out.println("История: " + markHistory + "\n" +
-                "Математика: " + markProgramming + "\n" +
-                "Средний бал: " +
+        System.out.println("РСЃС‚РѕСЂРёСЏ: " + markHistory + "\n" +
+                "РњР°С‚РµРјР°С‚РёРєР°: " + markProgramming + "\n" +
+                "РЎСЂРµРґРЅРёР№ Р±Р°Р»: " +
                 String.format("%.1f", ((float) (markHistory + markProgramming) / 2)) + "\n" +
-                "Средний % по предметам: " +
+                "РЎСЂРµРґРЅРёР№ % РїРѕ РїСЂРµРґРјРµС‚Р°Рј: " +
                 String.format("%.1f", ((gradeHistory + gradeProgramming) / 2)));
-    
-        System.out.println("\n8. Расчёт прибыли\n" +
+
+        System.out.println("\n8. Р Р°СЃС‡С‘С‚ РїСЂРёР±С‹Р»Рё\n" +
                 "-----------------");
         double monthRent = 5_000;
         double monthIncome = 15_000;
@@ -159,9 +159,9 @@ public class IfElseStatementTheme {
         } else {
             yearProfitMsg = "0.00";
         }
-        System.out.println("Прибыль за год: " + yearProfitMsg);
+        System.out.println("РџСЂРёР±С‹Р»СЊ Р·Р° РіРѕРґ: " + yearProfitMsg);
 
-        System.out.println("\n9. Определение существования треугольника\n" +
+        System.out.println("\n9. РћРїСЂРµРґРµР»РµРЅРёРµ СЃСѓС‰РµСЃС‚РІРѕРІР°РЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°\n" +
                 "-----------------------------------------");
         double catet1 = 3;
         double catet2 = 4;
@@ -177,9 +177,9 @@ public class IfElseStatementTheme {
             catet1 = temp;
         }
         if ((catet1 + catet2) <= hypotenuse) {
-            System.out.println("Треугольник с заданными длинами сторон не существует");
+            System.out.println("РўСЂРµСѓРіРѕР»СЊРЅРёРє СЃ Р·Р°РґР°РЅРЅС‹РјРё РґР»РёРЅР°РјРё СЃС‚РѕСЂРѕРЅ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚");
         } else  if ((catet1 * catet1) + (catet2 * catet2) == (hypotenuse * hypotenuse)) {
-            System.out.println("Площадь треугольника равна ((a * b) / 2): " +
+            System.out.println("РџР»РѕС‰Р°РґСЊ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° СЂР°РІРЅР° ((a * b) / 2): " +
                     String.format("%.1f", catet1 * catet2 / 2) + "\n");
             System.out.println("|\\" + "\n" +
                     "| \\" + "\n" +
@@ -187,7 +187,7 @@ public class IfElseStatementTheme {
                     "|___\\");
         }
 
-        System.out.println("\n10. Подсчёт количества банкнот\n" +
+        System.out.println("\n10. РџРѕРґСЃС‡С‘С‚ РєРѕР»РёС‡РµСЃС‚РІР° Р±Р°РЅРєРЅРѕС‚\n" +
                 "------------------------------");
         double srcSum = 567;
         double chkSum;
@@ -202,13 +202,13 @@ public class IfElseStatementTheme {
         bnk1 = (int) (srcSum - bnk100 * 100 - bnk10 * 10);
         chkSum = bnk100 * 100 + bnk10 * 10 + bnk1;
         if (chkSum != srcSum) {
-            System.out.println("Ошибка!");
+            System.out.println("РћС€РёР±РєР°!");
         } else {
-            System.out.println("Количество банкнот по номиналу:\n" +
+            System.out.println("РљРѕР»РёС‡РµСЃС‚РІРѕ Р±Р°РЅРєРЅРѕС‚ РїРѕ РЅРѕРјРёРЅР°Р»Сѓ:\n" +
                     "100: " + bnk100 + "\n" +
                     "10: " + bnk10 + "\n" +
                     "1: " + bnk1 + "\n" +
-                    "Исходная сумма: " + chkSum);
+                    "РС…РѕРґРЅР°СЏ СЃСѓРјРјР°: " + chkSum);
         }
     }
 }

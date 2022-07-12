@@ -38,7 +38,7 @@ public class Calculator {
                 System.out.println(num1 % num2);
                 break;
             default:
-                System.out.println("Œ¯Ë·Í‡!");
+                System.out.println("–û—à–∏–±–∫–∞!");
         }
     }
 
