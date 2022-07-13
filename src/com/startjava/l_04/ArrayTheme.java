@@ -8,75 +8,81 @@ public class ArrayTheme {
     public static void main(String[] args) {
         System.out.println("\n1. Реверс значений массива\n--------------------------");
         int[] intArr = {1, 2, 3, 4, 5, 6, 7};
+        int len = intArr.length;
         printArrayInt(intArr);
-        System.out.println();
-        for (int i = 0; i < intArr.length / 2; i++) {
-            int reverseNumberIndex = intArr.length - i - 1;
-            int numTemp = intArr[i];
-            intArr[i] = intArr[reverseNumberIndex];
-            intArr[reverseNumberIndex] = numTemp;
+        for (int i = 0; i < len / 2; i++) {
+            int index = len - i - 1;
+            int tmpNum = intArr[i];
+            intArr[i] = intArr[index];
+            intArr[index] = tmpNum;
         }
         printArrayInt(intArr);
 
-        System.out.println("\n\n2. Вывод произведения элементов массива\n---------------------------------------");
-        intArr = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        System.out.println("\n2. Вывод произведения элементов массива\n---------------------------------------");
+        len = 10;
+        intArr = new int[len];
+        for (int i = 0; i < len; i++) intArr[i] = i;
         int result = 1;
-        for (int i = 1; i < 9; i++) {
-            result *= intArr[i];
-            System.out.print(intArr[i] + (i < 8 ? " * " : " = "));
+        for (int i = 2; i < len - 1; i++) result *= intArr[i];
+        for (int i = 0; i < len; i++) {
+            System.out.print(i == 0 || i == 9 ? "\nЧисло " + intArr[i] + " индекс " + i + '\n' :
+                    intArr[i] + (i < 8 ? " * " : " = " + result));
         }
-        System.out.print(result);
-        System.out.println("\nЧисла " + intArr[0] + " и " + intArr[9] + " исключаются");
 
         System.out.println("\n3. Удаление элементов массива\n-----------------------------\n");
-        int len = 15;
-        double[] doubleArr = new double[len];
+        len = 15;
+        int cols = 8;
+        float[] floatArr = new float[len];
         for (int i = 0; i < len; i++) {
-            doubleArr[i] = (float) Math.random();
+            floatArr[i] = (float) Math.random();
         }
-        printArrayDouble(doubleArr, "%8.5f", 8);
-        double middleNumber = doubleArr[len / 2];
-        int zeroNumbersCount = 0;
+        printArrayFloat(floatArr, "%8.5f", 8);
+        double middleNum = floatArr[len / 2];
+        int zeroNumCount = 0;
         for (int i = 0; i < len; i++) {
-            if (doubleArr[i] > middleNumber) {
-                doubleArr[i] = 0;
-                zeroNumbersCount++;
+            if (floatArr[i] > middleNum) {
+                floatArr[i] = 0;
+                zeroNumCount++;
             }
         }
-        printArrayDouble(doubleArr, "%8.5f", 8);
-        System.out.println("Количество обнулённых яеек " + zeroNumbersCount);
+        printArrayFloat(floatArr, "%8.5f", 8);
+        System.out.println("Количество обнулённых ячеек " + zeroNumCount);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке\n------------------------------------------------------");
-        int charsCount = 'Z' - 'A' + 1;
-        char[] chars = new char[charsCount];
-        for (int i = 0; i < charsCount; i++) chars[i] = (char) ('A' + i);
-        int rowNumber = 0;
-        int charNumber = 0;
-        for (int i = 0; i < charsCount; i++) {
-            System.out.print(chars[i]);
-            if (charNumber == rowNumber) {
-                rowNumber++;
-                charNumber = 0;
-                System.out.println();
-            }
-            charNumber++;
+        len = 'Z' - 'A' + 1;
+        char[] chars = new char[len];
+        for (int i = 0; i < len; i++) chars[i] = (char) ('A' + i);
+        for (int i = 0; i < len; i++) {
+            for (int j = len - 1; j > len - 2 - i; j--) System.out.print(chars[j]);
+            System.out.println();
         }
 
-        System.out.println("\n\n5. Генерация уникальных чисел\n-----------------------------");
-        Random random = new Random();
+        System.out.println("\n5. Генерация уникальных чисел\n-----------------------------");
         len = 30;
         intArr = new int[len];
         for (int i = 0; i < len; i++) {
-            intArr[i] = 60 + random.nextInt(41);
-            for (int j = 0; j < i; j++) {
-                if (intArr[j] == intArr[i]) {
-                    i--;
-                    break;
+            int tmpNum;
+            boolean isExist;
+            do {
+                tmpNum = (int) (60 + 41 * Math.random());
+                isExist = false;
+                for (int j = 0; j < i; j++) {
+                    if (intArr[j] == tmpNum) {
+                        isExist = true;
+                        break;
+                    }
                 }
-            }
+            } while (isExist);
+            intArr[i] = tmpNum;
         }
         Arrays.sort(intArr);
-        printArrayInt(intArr, "%4d", 10);
+        cols = 10;
+        for (int i = 0; i < (len - 1) / cols + 1; i++) {
+            int rowCols = (i + 1) * cols > len ? (i + 1) * cols - len : cols;
+            int[] rowArr = new int[rowCols];
+            System.arraycopy(intArr, i * cols, rowArr, 0, rowCols);
+            printArrayInt(rowArr);
+        }
 
         System.out.println("\n6. Сдвиг элементов массива\n-----------------------------");
         String[] srcArr = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
@@ -104,26 +110,14 @@ public class ArrayTheme {
     }
 
     private static void printArrayInt(int[] ints) {
-        for (int num : ints) System.out.print(num + " ");
+        for (int num : ints) System.out.printf("%4d", num);
+        System.out.println();
     }
 
-    private static void printArrayInt(int[] ints, String fString, int fCols) {
-        fCols = fCols > 0 ? fCols : ints.length;
+    private static void printArrayFloat(float[] floats, String fString, int fCols) {
+        fCols = fCols > 0 ? fCols : floats.length;
         int i = 0;
-        for (int num : ints) {
-            System.out.printf(fString, num);
-            i++;
-            if (i == fCols) {
-                i = 0;
-                System.out.println();
-            }
-        }
-    }
-
-    private static void printArrayDouble(double[] doubles, String fString, int fCols) {
-        fCols = fCols > 0 ? fCols : doubles.length;
-        int i = 0;
-        for (double num : doubles) {
+        for (float num : floats) {
             System.out.printf(fString, num);
             i++;
             if (i == fCols) {
