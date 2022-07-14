@@ -1,7 +1,6 @@
 package com.startjava.l_04;
 
 import java.util.Arrays;
-import java.util.Random;
 
 public class ArrayTheme {
 
@@ -10,6 +9,7 @@ public class ArrayTheme {
         int[] intArr = {1, 2, 3, 4, 5, 6, 7};
         int len = intArr.length;
         printArrayInt(intArr);
+
         for (int i = 0; i < len / 2; i++) {
             int index = len - i - 1;
             int tmpNum = intArr[i];
@@ -19,47 +19,50 @@ public class ArrayTheme {
         printArrayInt(intArr);
 
         System.out.println("\n2. Вывод произведения элементов массива\n---------------------------------------");
-        len = 10;
-        intArr = new int[len];
+        intArr = new int[10];
+        len = intArr.length;
         for (int i = 0; i < len; i++) intArr[i] = i;
         int result = 1;
         for (int i = 2; i < len - 1; i++) result *= intArr[i];
-        for (int i = 0; i < len; i++) {
-            System.out.print(i == 0 || i == 9 ? "\nЧисло " + intArr[i] + " индекс " + i + '\n' :
-                    intArr[i] + (i < 8 ? " * " : " = " + result));
+        for (int i = 1; i < len - 1; i++) {
+            System.out.print(intArr[i] + (i < len - 2 ? " * " : (" = " + result) + '\n'));
         }
+        System.out.println("Число "+ intArr[0] + " находится под индексом " + 0);
+        System.out.println("Число "+ intArr[9] + " находится под индексом " + 9);
 
         System.out.println("\n3. Удаление элементов массива\n-----------------------------\n");
-        len = 15;
-        int cols = 8;
-        float[] floatArr = new float[len];
+        float[] floatArr = new float[15];
+        len = floatArr.length;
         for (int i = 0; i < len; i++) {
             floatArr[i] = (float) Math.random();
         }
         printArrayFloat(floatArr, "%8.5f", 8);
+
         double middleNum = floatArr[len / 2];
-        int zeroNumCount = 0;
+        int countZeros = 0;
         for (int i = 0; i < len; i++) {
             if (floatArr[i] > middleNum) {
                 floatArr[i] = 0;
-                zeroNumCount++;
+                countZeros++;
             }
         }
         printArrayFloat(floatArr, "%8.5f", 8);
-        System.out.println("Количество обнулённых ячеек " + zeroNumCount);
+        System.out.println("Количество обнулённых ячеек " + countZeros);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке\n------------------------------------------------------");
-        len = 'Z' - 'A' + 1;
-        char[] chars = new char[len];
+        char[] chars = new char[(int) ('Z' - 'A' + 1)];
+        len = chars.length;
         for (int i = 0; i < len; i++) chars[i] = (char) ('A' + i);
         for (int i = 0; i < len; i++) {
-            for (int j = len - 1; j > len - 2 - i; j--) System.out.print(chars[j]);
+            for (int j = len - 1; j > len - 2 - i; j--) {
+                System.out.print(chars[j]);
+            }
             System.out.println();
         }
 
         System.out.println("\n5. Генерация уникальных чисел\n-----------------------------");
-        len = 30;
-        intArr = new int[len];
+        intArr = new int[30];
+        len = intArr.length;
         for (int i = 0; i < len; i++) {
             int tmpNum;
             boolean isExist;
@@ -76,37 +79,34 @@ public class ArrayTheme {
             intArr[i] = tmpNum;
         }
         Arrays.sort(intArr);
-        cols = 10;
-        for (int i = 0; i < (len - 1) / cols + 1; i++) {
-            int rowCols = (i + 1) * cols > len ? (i + 1) * cols - len : cols;
-            int[] rowArr = new int[rowCols];
-            System.arraycopy(intArr, i * cols, rowArr, 0, rowCols);
-            printArrayInt(rowArr);
+        int cols = 1;
+        for (int num : intArr) {
+            System.out.printf("%4d", num);
+            if (cols++ % 10 == 0) System.out.print('\n');
         }
 
         System.out.println("\n6. Сдвиг элементов массива\n-----------------------------");
         String[] srcArr = {"", "AA", "", "", "BBB", "C", "", "DDDD"};
+        len = 0;
+        for (String s : srcArr) {
+            if (!s.isBlank()) len++;
+        }
+        String[] destArr = new String[len];
         len = srcArr.length;
-        int dstCount = len;
-        for (int i = 0; i < len; i++) { if (srcArr[i].isBlank()) { dstCount--; } }
-        String[] dstArr = new String[dstCount];
-        int dstPos = 0;
-        int numStrings = 0;
+        int destPos = 0;
         for (int i = 0; i < len; i++) {
-            boolean isEmpty = srcArr[i].isBlank();
-            boolean isEnd = i == (len - 1);
-            if (!isEmpty) { numStrings++; }
-            if ((isEmpty || isEnd) && numStrings > 0) {
-                int srcPos = i - numStrings + (isEnd ? 1 : 0);
-                System.arraycopy(srcArr, srcPos, dstArr, dstPos, numStrings);
-                if (!isEnd) {
-                    dstPos += numStrings;
-                    numStrings = 0;
-                }
+            int srcPos = i;
+            while (!srcArr[i].isBlank()) {
+                if (++i == len) break;
+            }
+            if (i > srcPos) {
+                int numStrings = i - srcPos;
+                System.arraycopy(srcArr, srcPos, destArr, destPos, numStrings);
+                if (i < len) destPos += numStrings;
             }
         }
         System.out.println(Arrays.toString(srcArr));
-        System.out.println(Arrays.toString(dstArr));
+        System.out.println(Arrays.toString(destArr));
     }
 
     private static void printArrayInt(int[] ints) {
