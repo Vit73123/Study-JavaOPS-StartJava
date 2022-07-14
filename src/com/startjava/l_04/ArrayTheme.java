@@ -31,22 +31,22 @@ public class ArrayTheme {
         System.out.println("Число "+ intArr[9] + " находится под индексом " + 9);
 
         System.out.println("\n3. Удаление элементов массива\n-----------------------------\n");
-        float[] floatArr = new float[15];
-        len = floatArr.length;
+        double[] doubleArr = new double[15];
+        len = doubleArr.length;
         for (int i = 0; i < len; i++) {
-            floatArr[i] = (float) Math.random();
+            doubleArr[i] = Math.random();
         }
-        printArrayFloat(floatArr, "%8.5f", 8);
+        printArrayDouble(doubleArr, "%8.5f", 8);
 
-        double middleNum = floatArr[len / 2];
+        double middleNum = doubleArr[len / 2];
         int countZeros = 0;
         for (int i = 0; i < len; i++) {
-            if (floatArr[i] > middleNum) {
-                floatArr[i] = 0;
+            if (doubleArr[i] > middleNum) {
+                doubleArr[i] = 0;
                 countZeros++;
             }
         }
-        printArrayFloat(floatArr, "%8.5f", 8);
+        printArrayDouble(doubleArr, "%8.5f", 8);
         System.out.println("Количество обнулённых ячеек " + countZeros);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке\n------------------------------------------------------");
@@ -114,10 +114,10 @@ public class ArrayTheme {
         System.out.println();
     }
 
-    private static void printArrayFloat(float[] floats, String fString, int fCols) {
-        fCols = fCols > 0 ? fCols : floats.length;
+    private static void printArrayDouble(double[] doubles, String fString, int fCols) {
+        fCols = fCols > 0 ? fCols : doubles.length;
         int i = 0;
-        for (float num : floats) {
+        for (double num : doubles) {
             System.out.printf(fString, num);
             i++;
             if (i == fCols) {
