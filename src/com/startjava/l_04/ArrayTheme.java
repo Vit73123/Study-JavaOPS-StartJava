@@ -82,7 +82,7 @@ public class ArrayTheme {
         int cols = 1;
         for (int num : intArr) {
             System.out.printf("%4d", num);
-            if (cols++ % 10 == 0) System.out.print('\n');
+            if (cols++ % 10 == 0) System.out.println();
         }
 
         System.out.println("\n6. Сдвиг элементов массива\n-----------------------------");
