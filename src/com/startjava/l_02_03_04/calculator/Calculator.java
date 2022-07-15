@@ -1,10 +1,11 @@
 package com.startjava.l_02_03_04.calculator;
 
 public class Calculator {
+
     private int num1;
     private int num2;
     private char sign;
- 
+
     public void setNum1(int num) {
         num1 = num;
     }
@@ -17,36 +18,31 @@ public class Calculator {
         this.sign = sign;
     }
 
-    public void calculate() {
+    public Integer calculate(String exp) {
+        setExpressionParts(exp);
         switch (sign) {
             case '+':
-                System.out.println(num1 + num2);
-                break;
+                return Math.addExact(num1, num2);
             case '-':
-                System.out.println(num1 - num2);
-                break;
+                return Math.subtractExact(num1, num2);
             case '*':
-                System.out.println(num1 * num2);
-                break;
+                return Math.multiplyExact(num1, num2);
             case '/':
-                System.out.println(num1 / num2);
-                break;
+                return Math.floorDiv(num1, num2);
             case '^':
-                System.out.println(pow());
-                break;
+                return (int) Math.pow(num1, num2);
             case '%':
-                System.out.println(num1 % num2);
-                break;
+                return (int) Math.floorMod(num1, num2);
             default:
                 System.out.println("Ошибка!");
+                return null;
         }
     }
 
-    private int pow() {
-        int result = 1;
-        for (int i = num2; i > 0; i--) {
-            result *= num1;
-        }
-        return result;          
+    private void setExpressionParts(String exp) {
+        String[] expParts = exp.split(" ");
+        num1 = Integer.parseInt(expParts[0]);
+        num2 = Integer.parseInt(expParts[2]);
+        sign = expParts[1].charAt(0);
     }
 }
