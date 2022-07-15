@@ -1,4 +1,4 @@
-package com.startjava.l_02_03.calculator;
+package com.startjava.l_02_03_04.calculator;
 
 public class Calculator {
     private int num1;

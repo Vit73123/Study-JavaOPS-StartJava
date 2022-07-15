@@ -1,4 +1,4 @@
-package com.startjava.l_02_03.person;
+package com.startjava.l_02_03_04.person;
 
 public class Person {
     char gender = 'М';

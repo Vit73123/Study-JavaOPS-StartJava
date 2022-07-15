@@ -22,7 +22,7 @@
  * strike()             Добавлен v 1.1
  * roll()               Добавлен v 1.1 
  */
-package com.startjava.l_02_03.robot;
+package com.startjava.l_02_03_04.robot;
 
 public class Jaeger {
     public String modelName;

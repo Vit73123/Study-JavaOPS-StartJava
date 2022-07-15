@@ -1,4 +1,4 @@
-package com.startjava.l_02_03.guess;
+package com.startjava.l_02_03_04.guess;
 
 import java.util.Scanner;
 

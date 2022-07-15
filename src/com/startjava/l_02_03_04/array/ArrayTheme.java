@@ -1,4 +1,4 @@
-package com.startjava.l_04;
+package com.startjava.l_02_03_04.array;
 
 import java.util.Arrays;
 

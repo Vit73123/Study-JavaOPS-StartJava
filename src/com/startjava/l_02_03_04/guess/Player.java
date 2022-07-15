@@ -1,6 +1,4 @@
-package com.startjava.l_02_03.guess;
-
-import java.util.Scanner;
+package com.startjava.l_02_03_04.guess;
 
 class Player {
     private String name;
