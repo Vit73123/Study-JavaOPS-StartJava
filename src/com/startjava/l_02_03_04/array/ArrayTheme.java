@@ -96,9 +96,7 @@ public class ArrayTheme {
         int destPos = 0;
         for (int i = 0; i < len; i++) {
             int srcPos = i;
-            while (!srcArr[i].isBlank()) {
-                if (++i == len) break;
-            }
+            while (i < len && !srcArr[i].isBlank()) i++;
             if (i > srcPos) {
                 int numStrings = i - srcPos;
                 System.arraycopy(srcArr, srcPos, destArr, destPos, numStrings);
