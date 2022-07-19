@@ -15,12 +15,13 @@ public class CalculatorTest {
             try {
                 result = Calculator.calculate(exp);
                 System.out.print("Результат: " + result + '\n');
-            } catch (Calculator.WrongExpressionException e) {
-                System.out.println("Ошибка в выражении");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
             do {
                 System.out.print("Хотите продолжить вычисления? [да/нет]: ");
                 yesNo = scan.nextLine();
+                System.out.println();
             } while (!(yesNo.equals("да") || yesNo.equals("нет")));
         }
     }
