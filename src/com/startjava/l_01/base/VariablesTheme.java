@@ -22,13 +22,13 @@ public class VariablesTheme {
         System.out.println("\nОценка производительности A-F: " + grade);
         long anyData = 0L;
         System.out.println("Дополнительные данные: " + anyData);
-    
+
         System.out.println("\n2. Расчёт стоимости товара со скидкой\n" +
                 "-------------------------------------");
         float priceX = 100;
         float priceY = 200;
         System.out.println("Сумма скидки : " + ((priceX + priceY) * 0.11F));
-        System.out.println("Стоимость товаров со скидкой : " + 
+        System.out.println("Стоимость товаров со скидкой : " +
                 ((priceX + priceY) * (1 - 0.11F)));
 
         System.out.println("\n3. Вывод на консоль слова JAVA\n" +
@@ -63,9 +63,9 @@ public class VariablesTheme {
 
         System.out.println("\n5. Перестановка значений переменных\n" +
                 "-----------------------------------");
-        float number1 = 1;
-        float number2 = 2;
-        float tmp = 0;
+        double number1 = 123.45678;
+        double number2 = 234.56789;
+        double tmp = 0;
         System.out.println("Способ 1 - с помощью третьей переменной:\n" +
                 "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
@@ -76,27 +76,31 @@ public class VariablesTheme {
         System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
-        number1 = 1;
-        number2 = 2;
+        number1 = 123.45678;
+        number2 = 234.56789;
         System.out.println("\nСпособ 2 - с помощью арифметических операций:\n" +
                 "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
         number1 += number2;
-        number2 = (float) (number1 - number2);
+        number2 = number1 - number2;
         number1 -= number2;
         System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
-        number1 = 1;
-        number2 = 2;
+        number1 = 123.45678;
+        number2 = 234.56789;
         System.out.println("\nСпособ 3 - с помощью побитовой операции ^:\n" +
                 "Исходные значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
-        number1 = (float) ((int) number1 ^ (int) number2);
-        number2 = (float) ((int) number1 ^ (int) number2);
-        number1 = (float) ((int) number1 ^ (int) number2);
+        long tmpNumber1 = Double.doubleToLongBits(number1);
+        long tmpNumber2 = Double.doubleToLongBits(number2);
+        tmpNumber1 = tmpNumber1 ^ tmpNumber2;
+        tmpNumber2 = tmpNumber1 ^ tmpNumber2;
+        tmpNumber1 = tmpNumber1 ^ tmpNumber2;
+        number1 = Double.longBitsToDouble(tmpNumber1);
+        number2 = Double.longBitsToDouble(tmpNumber2);
         System.out.println("Новые значения переменных:\n" +
                 "number1: " + number1 + "\n" +
                 "number2: " + number2);
@@ -148,7 +152,7 @@ public class VariablesTheme {
                 backslash + underscore + underscore + backslash);
 
         System.out.println("\n9. Отображение количества сотен, десятков и единиц числа\n" +
-               "--------------------------------------------------------");
+                "--------------------------------------------------------");
         srcNumber = 123;
         System.out.println(srcNumber + " содержит: \n" +
                 srcNumber / 100 + " сотен\n" +
