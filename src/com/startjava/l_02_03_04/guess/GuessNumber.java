@@ -15,8 +15,9 @@ public class GuessNumber {
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-        player1.setNumbs(countAttempts);
-        player2.setNumbs(countAttempts);
+        player1.setNums(countAttempts);
+        player2.setNums(countAttempts);
+        System.out.println("У каждого игрока по " + countAttempts + " попыток");
     }
 
     public int getCountAttempts() {
@@ -30,7 +31,7 @@ public class GuessNumber {
 
         targetNumber = startRange + (int) (Math.random() * endRange);
         int currentAttempt = 1;
-        System.out.print("*".repeat(60) + '\n');
+        System.out.print('\n' + "*".repeat(60) + '\n');
         while ((currentAttempt < countAttempts) && !(isGuessed(player1) || isGuessed(player2))) {
             System.out.println("Осталось: " + (countAttempts - currentAttempt) + " попыток\n");
             currentAttempt++;
@@ -73,7 +74,7 @@ public class GuessNumber {
 
     public void printNumbers(Player player) {
         System.out.print("Числа игрока " + player.getName() + ": ");
-        for (int num : player.getNumbs()) {
+        for (int num : player.getNums()) {
             System.out.printf("%3d", num);
         }
         System.out.println();
