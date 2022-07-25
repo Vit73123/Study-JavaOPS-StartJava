@@ -19,22 +19,22 @@ class Player {
         return Arrays.copyOf(nums, currentAttempt);
     }
 
-    public void setNums(int num) {
-        nums = new int[num];
-    }
-
     public int getCurrentAttempt() {
         return currentAttempt;
     }
 
-    public void cleanNumbers() {
+    public void clear() {
         if (currentAttempt > 0) {
             Arrays.fill(nums, 0, currentAttempt, 0);
             currentAttempt = 0;
         }
     }
 
-    public void addNum (int num) {
+    public void createNums(int num) {
+        nums = new int[num];
+    }
+
+    public void addNum(int num) {
         nums[currentAttempt++] = num;
     }
 }
