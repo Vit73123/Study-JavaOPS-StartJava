@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    public static final int startRange = 1;
-    public static final int endRange = 100;
+    public static final int START_RANGE = 1;
+    public static final int END_RANGE = 100;
     private int targetNum;
     private final int countAttempts = 10;
     private final int countRounds = 3;
@@ -31,13 +31,9 @@ public class GuessNumber {
         for (Player player : players) player.setScore(0);
     }
 
-    private void setUpRound() {
-        for (Player player : players) player.clearNums();
-    }
-
     private void runGameplay() {
         setUpRound();
-        targetNum = startRange + (int) (Math.random() * endRange);
+        targetNum = START_RANGE + (int) (Math.random() * END_RANGE);
         System.out.print('\n' + "*".repeat(60) + "\n\n");
         int attempt = 0;
         int turn = 0;
@@ -59,6 +55,10 @@ public class GuessNumber {
         printNumbers();
     }
 
+    private void setUpRound() {
+        for (Player player : players) player.clearNums();
+    }
+
     private boolean isGuessed(Player player) {
         int num;
         try {
@@ -67,16 +67,15 @@ public class GuessNumber {
             System.out.println("Вы ошиблись: " + e.getMessage() + ". Ход переходит к следующему игроку");
             return false;
         }
-        if (num == targetNum) {
-            player.setScore(1);
-            if (player.getScore() > maxScore) maxScore++;
-            System.out.println('\n' + player.getName() + ", Вы угадали c " + player.getAttempt() + " попытки!");
-            return true;
-        } else {
+        if (num != targetNum) {
             System.out.println(("Число " + num + (num < targetNum ? " меньше " : " больше ") +
                     "того, что загадал компьютер"));
             return false;
         }
+        player.setScore(1);
+        if (player.getScore() > maxScore) maxScore++;
+        System.out.println('\n' + player.getName() + ", Вы угадали c " + player.getAttempt() + " попытки!");
+        return true;
     }
 
     private int guess(Player player) {
@@ -88,8 +87,7 @@ public class GuessNumber {
         } catch (InputMismatchException e) {
             throw new IllegalArgumentException("Не является целым числом");
         }
-        player.addNum(num);
-        return num;
+        return player.addNum(num);
     }
 
     private void shuffleTurn() {
@@ -105,7 +103,7 @@ public class GuessNumber {
         int countRecords = 0;
         for (Player player : players) {
             if (player.getScore() == maxScore) {
-                if (countRecords++ > 0) { return true; }
+                if (countRecords++ > 0) return true;
             }
         }
         return false;

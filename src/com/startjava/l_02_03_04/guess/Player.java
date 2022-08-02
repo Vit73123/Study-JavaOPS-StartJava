@@ -2,8 +2,8 @@ package com.startjava.l_02_03_04.guess;
 
 import java.util.Arrays;
 
-import static com.startjava.l_02_03_04.guess.GuessNumber.endRange;
-import static com.startjava.l_02_03_04.guess.GuessNumber.startRange;
+import static com.startjava.l_02_03_04.guess.GuessNumber.END_RANGE;
+import static com.startjava.l_02_03_04.guess.GuessNumber.START_RANGE;
 
 class Player {
     private final String name;
@@ -32,16 +32,12 @@ class Player {
     }
 
     public void setScore(int score) {
-        if (score > 0) {
-            this.score += score;
-        } else {
-            this.score = 0;
-        }
+        this.score += (score > 0) ? score : 0;
     }
 
     public void setUp(int countAttempts) {
         attempt = 0;
-        this.nums = new int[countAttempts];
+        nums = new int[countAttempts];
     }
 
     public void clearNums() {
@@ -51,10 +47,11 @@ class Player {
         }
     }
 
-    public void addNum(int num) {
-        if ((num < startRange) || (num > endRange)) {
+    public int addNum(int num) {
+        if ((num < START_RANGE) || (num > END_RANGE)) {
             throw new IllegalArgumentException("Недопустимое число, должно быть целое от 1 до 100");
         }
         nums[attempt++] = num;
+        return num;
     }
 }
