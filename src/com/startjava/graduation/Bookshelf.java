@@ -30,7 +30,8 @@ public class Bookshelf {
     }
 
     private Book inputBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, "windows-1251");
+        Scanner scan = new Scanner(System.in, "cp866");
+//        Scanner scan = new Scanner(System.in, "windows-1251");
         Book book = new Book();
 
         if (getEmptyCells() > 0) {
@@ -80,7 +81,8 @@ public class Bookshelf {
     }
 
     public Book findBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, "windows-1251");
+        Scanner scan = new Scanner(System.in, "cp866");
+//        Scanner scan = new Scanner(System.in, "windows-1251");
         System.out.print("Наименование : ");
         Book book = getBookByName(scan.nextLine().trim());
         return book;

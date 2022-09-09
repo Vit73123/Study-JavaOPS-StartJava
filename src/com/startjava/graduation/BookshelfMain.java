@@ -34,7 +34,8 @@ public class BookshelfMain {
         printBorderLine("-");
         byte menu = 0;
         System.out.print("Выберите пункт меню: ");
-        Scanner scan = new Scanner(System.in, "windows-1251");
+        Scanner scan = new Scanner(System.in, "cp866");
+//        Scanner scan = new Scanner(System.in, "windows-1251");
         try {
             menu = scan.nextByte();
             menu = menu < 0 || menu > MENU_EXIT ? MENU_EXIT : menu;
