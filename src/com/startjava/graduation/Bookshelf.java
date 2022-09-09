@@ -1,4 +1,4 @@
-package com.startjava.Diploma;
+package com.startjava.graduation;
 
 import java.util.ArrayList;
 import java.util.Scanner;

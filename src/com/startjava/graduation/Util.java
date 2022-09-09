@@ -1,4 +1,4 @@
-package com.startjava.Diploma;
+package com.startjava.graduation;
 
 import java.util.Scanner;
 
@@ -10,6 +10,7 @@ public class Util {
         do {
             System.out.print(message + " [да / нет]: ");
             yesNo = scan.nextLine();
+            System.out.println(yesNo);
             if (yesNo.trim().equalsIgnoreCase("нет")) return false;
         } while (!yesNo.trim().equalsIgnoreCase("да"));
         return true;

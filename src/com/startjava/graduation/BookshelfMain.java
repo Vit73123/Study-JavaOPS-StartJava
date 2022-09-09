@@ -1,14 +1,14 @@
-package com.startjava.Diploma;
+package com.startjava.graduation;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Work {
+public class BookshelfMain {
     private Bookshelf bookshelf = new Bookshelf();
     private static final byte MENU_EXIT = 6;
 
     public static void main(String[] args) {
-        Work work = new Work();
+        BookshelfMain work = new BookshelfMain();
 
         byte menu = 0;
         while (menu != MENU_EXIT) {

@@ -1,4 +1,4 @@
-package com.startjava.Diploma;
+package com.startjava.graduation;
 
 public class Book {
 
