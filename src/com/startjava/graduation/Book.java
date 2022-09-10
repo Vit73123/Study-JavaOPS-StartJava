@@ -38,8 +38,8 @@ public class Book {
     public String toReportString() {
         return String.format("| %-" + FIX_AUTHOR_SIZE + "s | %-" + FIX_NAME_SIZE + "s | %" + FIX_YEAR_SIZE +
                         "d |",
-                Util.leftString(author, FIX_AUTHOR_SIZE),
-                Util.leftString(name, FIX_NAME_SIZE),
+                BookshelfMain.leftString(author, FIX_AUTHOR_SIZE),
+                BookshelfMain.leftString(name, FIX_NAME_SIZE),
                 year);
     }
 }

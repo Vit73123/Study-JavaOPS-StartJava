@@ -1,7 +1,6 @@
 package com.startjava.graduation;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Bookshelf {
 
@@ -13,48 +12,54 @@ public class Bookshelf {
         addTestBooks();
     }
 
-    public void addBook() {
-        Book book = null;
-        printReport();
-        printReportLine();
-        System.out.println("Добавить книгу");
-        try {
-            book = inputBook();
-            if (Util.chooseYes("Добавить книгу?")) {
-                books.add(book);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        printReport();
+    public void addBook(Book book) {
+        books.add(book);
     }
 
-    private Book inputBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, "cp866");
-//        Scanner scan = new Scanner(System.in, "windows-1251");
-        Book book = new Book();
+    public void checkCells() throws IllegalArgumentException {
+        if (getEmptyCells() <= 0)
+            throw new IllegalArgumentException("На полке места нет");
+    }
 
-        if (getEmptyCells() > 0) {
-            System.out.print("Наименование : ");
-            book.setName(scan.nextLine());
-            System.out.print("Автор        : ");
-            book.setAuthor(scan.nextLine());
-            System.out.print("Год          : ");
-            book.setYear(scan.nextInt());
-            if (book.getSize() > getEmptySize()) {
-                throw new IllegalArgumentException("Для данной книги места на полке нет");
-            }
-        } else {
-            throw new IllegalArgumentException("На полке нет места. Вы не можете добавлять книги");
+    public void checkSpace(Book book) throws IllegalArgumentException {
+        if (book.getSize() > getEmptySpace())
+            throw new IllegalArgumentException("На полке места нет для данной книги");
+    }
+
+    public Book findBook(String name) throws IllegalArgumentException {
+        for (Book book : books) {
+            if (book.getName().equals(name)) return book;
         }
-        return book;
+        throw new IllegalArgumentException("На полке книги \"" + name + "\" нет");
+    }
+
+    public void deleteBook(Book book) {
+        books.remove(book);
+    }
+
+    public void clear() {
+
+        books.clear();
+    }
+
+    public void printReport() {
+        BookshelfMain.printLine("-");
+        printReportBusyCells();
+        printReportEmptyCells();
+        printInfo();
+    }
+
+    public void printInfo() {
+        BookshelfMain.printLine("-");
+        System.out.println("На полке " +  (books.size() > 0 ? books.size() : "нет") + " книг. " +
+                "Осталось места для " + getEmptyCells() + " книг.");
     }
 
     private int getEmptyCells() {
-        return Math.round((float) getEmptySize() / (float) Book.FIX_SIZE);
+        return Math.round((float) getEmptySpace() / (float) Book.FIX_SIZE);
     }
 
-    private int getEmptySize() {
+    private int getEmptySpace() {
         int sizeOfBooks = 0;
         for (Book book : books) {
             sizeOfBooks += book.getSize();
@@ -62,53 +67,8 @@ public class Bookshelf {
         return fixSize - sizeOfBooks;
     }
 
-    public void deleteBook() {
-        printReport();
-        printReportLine();
-        System.out.println("Удалить книгу");
-        Book book = new Book();
-
-        try {
-            book = findBook();
-            System.out.println("Книга \"" + book.getName() + "\" находится на месте " + (books.indexOf(book) + 1));
-            if (Util.chooseYes("Удалить книгу?")) {
-                books.remove(book);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
-        }
-        printReport();
-    }
-
-    public Book findBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, "cp866");
-//        Scanner scan = new Scanner(System.in, "windows-1251");
-        System.out.print("Наименование : ");
-        Book book = getBookByName(scan.nextLine().trim());
-        return book;
-    }
-
-    private Book getBookByName(String name) throws IllegalArgumentException {
-        for (Book book : books) {
-            if (book.getName().equals(name)) return book;
-        }
-        throw new IllegalArgumentException("На полке книги \"" + name + "\" нет");
-    }
-
-    public void clear() {
-        printReport();
-        printReportLine();
-        if (Util.chooseYes("В хотите удалить все книги с полки? ")) {
-            books.clear();
-        }
-        printReport();
-    }
-
-    public void printReport() {
-        printReportLine();
-        printReportBusyCells();
-        printReportEmptyCells();
-        printInfo();
+    public void printBookCell(Book book) {
+        System.out.println("Книга \"" + book.getName() + "\" находится на месте " + (books.indexOf(book) + 1));
     }
 
     private void printReportBusyCells() {
@@ -127,16 +87,7 @@ public class Bookshelf {
     private void printReportEmptyCell(int num) {
         System.out.println("| " + String.format("%2d ", num) + "| " + " ".repeat(Book.FIX_AUTHOR_SIZE) + " | " +
                 " ".repeat(Book.FIX_NAME_SIZE) + " | " + " ".repeat(Book.FIX_YEAR_SIZE) + " |");
-    }
-
-    private void printReportLine() {
-        Util.printLine("-", Book.INFO_LEN);
-    }
-
-    public void printInfo() {
-        printReportLine();
-        System.out.println("На полке " +  (books.size() > 0 ? books.size() : "нет") + " книг. " +
-                "Осталось места для " + getEmptyCells() + " книг.");
+//        System.out.println("| " + String.format("%2d", num) + " ".repeat(Book.INFO_LEN - 5) + "|");
     }
 
 // =============================================================================================
