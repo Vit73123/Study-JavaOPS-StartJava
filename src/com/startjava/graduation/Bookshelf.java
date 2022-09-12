@@ -1,162 +1,172 @@
 package com.startjava.graduation;
 
-import java.util.ArrayList;
-
 public class Bookshelf {
-
-    private final int fixCells = 10;
-    private final int fixSize = fixCells * Book.FIX_SIZE;
-    private ArrayList <Book> books = new ArrayList<>();
+    private final int cellsNum = 10;
+    private Book[] books = new Book[cellsNum];
+    private final int defaultSize = 50;
+    private int size = defaultSize;
+    private int booksNum = 0;
 
     Bookshelf() {
         addTestBooks();
     }
 
     public void addBook(Book book) {
-        books.add(book);
-    }
-
-    public void checkCells() throws IllegalArgumentException {
-        if (getEmptyCells() <= 0)
-            throw new IllegalArgumentException("На полке места нет");
-    }
-
-    public void checkSpace(Book book) throws IllegalArgumentException {
-        if (book.getSize() > getEmptySpace())
-            throw new IllegalArgumentException("На полке места нет для данной книги");
-    }
-
-    public Book findBook(String name) throws IllegalArgumentException {
-        for (Book book : books) {
-            if (book.getName().equals(name)) return book;
+        books[booksNum] = book;
+        if (booksNum > 0) {
+            setSize(book.getLen());
+        } else {
+            size = book.getLen();
         }
-        throw new IllegalArgumentException("На полке книги \"" + name + "\" нет");
+        booksNum++;
     }
 
-    public void deleteBook(Book book) {
-        books.remove(book);
+    public void deleteBook(String name) {
+        int bookNum = getBookNum(name);
+        System.arraycopy(books, bookNum + 1 , books, bookNum, booksNum - bookNum - 1);
+        books[--booksNum] = null;
+        if (booksNum > 0) {
+            setSize();
+        } else {
+            size = defaultSize;
+        }
+    }
+
+    public boolean hasBook(String name) {
+        for (int i = 0; i < booksNum; i++) {
+            if (books[i].getName().equals(name)) return true;
+        }
+        return false;
+    }
+
+    public boolean hasBooks() {
+        return booksNum > 0;
+    }
+
+    public boolean hasCells() {
+        return booksNum < cellsNum;
     }
 
     public void clear() {
-
-        books.clear();
+        while (booksNum > 0) books[--booksNum] = null;
+        size = defaultSize;
     }
 
     public void printReport() {
-        BookshelfMain.printLine("-");
-        printReportBusyCells();
-        printReportEmptyCells();
+        printLine("-");
+        for (int i = 0; i < cellsNum; i++) {
+            System.out.printf("| %2d %-" + (size + 4) + "s |\n", i + 1, books[i] != null ? books[i].toString() : "");
+        }
+        printLine("-");
         printInfo();
+
     }
 
     public void printInfo() {
-        BookshelfMain.printLine("-");
-        System.out.println("На полке " +  (books.size() > 0 ? books.size() : "нет") + " книг. " +
-                "Осталось места для " + getEmptyCells() + " книг.");
+        System.out.print("На полке " +  (booksNum > 0 ? booksNum : "нет") + " книг. ");
+        if (booksNum == cellsNum)
+            System.out.println("На полке места нет");
+        else
+            System.out.println("Осталось места для " + (cellsNum - booksNum) + " книг.");
+//        printLine("-");
     }
 
-    private int getEmptyCells() {
-        return Math.round((float) getEmptySpace() / (float) Book.FIX_SIZE);
+    public void printLine(String type) {
+        System.out.println(type.repeat(size + 11));
     }
 
-    private int getEmptySpace() {
-        int sizeOfBooks = 0;
-        for (Book book : books) {
-            sizeOfBooks += book.getSize();
-        }
-        return fixSize - sizeOfBooks;
-    }
-
-    public void printBookCell(Book book) {
-        System.out.println("Книга \"" + book.getName() + "\" находится на месте " + (books.indexOf(book) + 1));
-    }
-
-    private void printReportBusyCells() {
-        for (Book book : books) {
-            System.out.println(String.format("| %2d ", books.indexOf(book) + 1) + book.toReportString());
+    private void setSize() {
+        size = books[0].getLen();
+        for (int i = 1; i < booksNum; i++) {
+            int len = books[i].getLen();
+            if (len > size) size = len;
         }
     }
 
-    private void printReportEmptyCells() {
-        int num = books.size() + 1;
-        for (int i = 0; i < getEmptyCells(); i++) {
-            printReportEmptyCell(num + i);
+    private void setSize(int len) {
+        if (len > size) size = len;
+    }
+
+    private int getBookNum (String name) {
+        for (int i = 0; i < booksNum; i++) {
+            if (books[i].getName().equals(name)) return i;
         }
+        return -1;
     }
 
-    private void printReportEmptyCell(int num) {
-        System.out.println("| " + String.format("%2d ", num) + "| " + " ".repeat(Book.FIX_AUTHOR_SIZE) + " | " +
-                " ".repeat(Book.FIX_NAME_SIZE) + " | " + " ".repeat(Book.FIX_YEAR_SIZE) + " |");
-//        System.out.println("| " + String.format("%2d", num) + " ".repeat(Book.INFO_LEN - 5) + "|");
-    }
-
-// =============================================================================================
+    // =============================================================================================
 
     private void addTestBooks() {
 //        System.out.println("*** addTestBooks ***");
 
-        Book book;
+        books[0] = new Book();
+        books[0].setName("Над пропастью во ржи");
+        books[0].setAuthor("Джером Дэвид Селинджер");
+        books[0].setYear(1951);
+        size = books[0].getLen();
+        booksNum++;
 
-        book = new Book();
-        book.setName("Над пропастью во ржи");
-        book.setAuthor("Джером Дэвид Селинджер");
-        book.setYear(1951);
-        books.add(book);
+        books[1] = new Book();
+        books[1].setName("Жажда жизни");
+        books[1].setAuthor("Ирвинг Стоун");
+        books[1].setYear(1973);
+        setSize(books[1].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("Жажда жизни");
-        book.setAuthor("Ирвинг Стоун");
-        book.setYear(1973);
-        books.add(book);
+        books[2] = new Book();
+        books[2].setName("Унесенные ветром");
+        books[2].setAuthor("Маргарет Митчелл");
+        books[2].setYear(1936);
+        setSize(books[2].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("Унесенные ветром");
-        book.setAuthor("Маргарет Митчелл");
-        book.setYear(1936);
-        books.add(book);
+        books[3] = new Book();
+        books[3].setName("Великий Гэтсби");
+        books[3].setAuthor("Фрэнсис Скотт Фицджеральд");
+        books[3].setYear(1925);
+        setSize(books[3].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("Великий Гэтсби");
-        book.setAuthor("Фрэнсис Скотт Фицджеральд");
-        book.setYear(1925);
-        books.add(book);
-
-        book = new Book();
-        book.setName("Улисс");
-        book.setAuthor("Джеймс Джойс");
-        book.setYear(1920);
-        books.add(book);
+        books[4] = new Book();
+        books[4].setName("Улисс");
+        books[4].setAuthor("Джеймс Джойс");
+        books[4].setYear(1920);
+        setSize(books[4].getLen());
+        booksNum++;
 
 /*
-        book = new Book();
-        book.setName("Гордость и предубеждение");
-        book.setAuthor("Джейн Остин");
-        book.setYear(1831);
-        books.add(book);
+        books[5] = new Book();
+        books[5].setName("Гордость и предубеждение");
+        books[5].setAuthor("Джейн Остин");
+        books[5].setYear(1931);
+        setSize(books[5].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("Кентерберийские рассказы");
-        book.setAuthor("Джефри Чосер");
-        book.setYear(1972);
-        books.add(book);
+        books[6] = new Book();
+        books[6].setName("Кентерберийские рассказы");
+        books[6].setAuthor("Джефри Чосер");
+        books[6].setYear(1972);
+        setSize(books[6].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("\"Илиада\" и \"Одиссея\"");
-        book.setAuthor("Гомер");
-        book.setYear(2013);
-        books.add(book);
+        books[7] = new Book();
+        books[7].setName("\"Илиада\" и \"Одиссея\"");
+        books[7].setAuthor("Гомер");
+        setSize(books[7].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("На маяк");
-        book.setAuthor("Вирджиния Вулф");
-        book.setYear(1927);
-        books.add(book);
+        books[8] = new Book();
+        books[8].setName("На маяк");
+        books[8].setAuthor("Вирджиния Вулф");
+        books[8].setYear(1927);
+        setSize(books[8].getLen());
+        booksNum++;
 
-        book = new Book();
-        book.setName("История");
-        book.setAuthor("Геродот");
-        book.setYear(1972);
-        books.add(book);
+        books[9] = new Book();
+        books[9].setName("История");
+        books[9].setAuthor("Геродот");
+        setSize(books[9].getLen());
+        booksNum++;
 */
     }
 }

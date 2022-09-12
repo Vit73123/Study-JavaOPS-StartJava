@@ -12,16 +12,18 @@ public class BookshelfMain {
     public static void main(String[] args) {
         BookshelfMain bookshelfMain = new BookshelfMain();
 
-        byte menuItem = 0;
-        while (menuItem != MENU_EXIT) {
-            printLine("*");
-            bookshelfMain.printMenu();
-            menuItem = bookshelfMain.chooseMenu();
-            bookshelfMain.runMenu(menuItem);
+        boolean exit = false;
+        bookshelfMain.bookshelf.printLine("*");
+        bookshelfMain.bookshelf.printReport();
+        while (!exit) {
+            bookshelfMain.bookshelf.printLine("*");
+            exit = bookshelfMain.runMenu();
         }
     }
 
-    private void printMenu() {
+    private boolean runMenu() {
+        Scanner scan = new Scanner(System.in, CHARSET_NAME);
+
         System.out.println("""
                 1 -> Добавить книгу
                 2 -> Удалить книгу
@@ -30,11 +32,8 @@ public class BookshelfMain {
                 5 -> Инфо
                 6 -> Выход
                 """);
-    }
+        bookshelf.printLine("-");
 
-    private byte chooseMenu() {
-        Scanner scan = new Scanner(System.in, CHARSET_NAME);
-        printLine("-");
         byte menuItem = 0;
         System.out.print("Выберите пункт меню: ");
         try {
@@ -43,40 +42,35 @@ public class BookshelfMain {
         } catch (InputMismatchException e) {
             menuItem = 0;
         }
-        return menuItem;
-    }
 
-    private void runMenu(byte menu) {
-        switch (menu) {
-            case 1 -> addBook();
-            case 2 -> deleteBook();
-            case 3 -> clear();
-            case 4 -> bookshelf.printReport();
-            case 5 -> bookshelf.printInfo();
-        }
-    }
-
-    public void addBook() {
-        Book book = null;
-        bookshelf.printReport();
-        printLine("-");
-        System.out.println("Новая книга");
         try {
-            book = inputBook();
-            if (chooseYes("Добавить книгу?")) {
-                bookshelf.addBook(book);
+            switch (menuItem) {
+                case 1 -> addBook();
+                case 2 -> deleteBook();
+                case 3 -> clear();
+                case 4 -> bookshelf.printReport();
+                case 5 -> bookshelf.printInfo();
+                case MENU_EXIT -> {
+                    return true;
+                }
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
-        bookshelf.printReport();
+        return false;
     }
 
-    private Book inputBook() throws IllegalArgumentException {
+    public void addBook() throws IllegalArgumentException {
         Scanner scan = new Scanner(System.in, CHARSET_NAME);
-        Book book = new Book();
 
-        bookshelf.checkCells();
+        if (!bookshelf.hasCells()) {
+            throw new IllegalArgumentException("На полке места нет. Вы не можете добавлять книги.");
+        }
+
+        Book book = new Book();
+        bookshelf.printReport();
+        bookshelf.printLine("-");
+        System.out.println("Новая книга");
         System.out.print("Наименование : ");
         book.setName(scan.nextLine());
         System.out.print("Автор        : ");
@@ -85,49 +79,51 @@ public class BookshelfMain {
         try {
             book.setYear(scan.nextInt());
         } catch (InputMismatchException e) {
-            throw new IllegalArgumentException("Ошибка: Год книги введён неверно");
+            System.out.println("Ошибка: Год книги введён неверно");
+            return;
         }
-        bookshelf.checkSpace(book);
-
-        return book;
-    }
-
-    private void deleteBook() {
-        bookshelf.printReport();
-        printLine("-");
-        System.out.println("Удаление книги");
-        Book book = new Book();
-
-        try {
-            book = askBook();
-            bookshelf.printBookCell(book);
-            if (chooseYes("Удалить книгу?")) {
-                bookshelf.deleteBook(book);
-            }
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        if (chooseYes("Добавить книгу?")) {
+            bookshelf.addBook(book);
         }
         bookshelf.printReport();
     }
 
-    private Book askBook() throws IllegalArgumentException {
+    private void deleteBook() throws IllegalArgumentException {
         Scanner scan = new Scanner(System.in, CHARSET_NAME);
 
+        bookshelf.printReport();
+        bookshelf.printLine("-");
+        System.out.println("Удаление книги");
         System.out.print("Наименование : ");
-        Book book = bookshelf.findBook(scan.nextLine().trim());
 
-        return book;
+        if (!bookshelf.hasBooks()) {
+            throw new IllegalArgumentException("На полке книг нет. Вы не можете удалять книги.");
+        }
+
+        String name = scan.nextLine().trim();
+
+        if (!bookshelf.hasBook(name)) {
+            throw new IllegalArgumentException("На полке книги \"" + name + "\" нет");
+        }
+
+        if (chooseYes("Удалить книгу " + "\"" + name + "\"" + "?")) {
+            bookshelf.deleteBook(name);
+        }
+        bookshelf.printReport();
     }
 
-    public void clear() {
+    public void clear() throws IllegalArgumentException {
         bookshelf.printReport();
-        printLine("-");
-        if (chooseYes("В хотите удалить все книги с полки? ")) {
+        bookshelf.printLine("-");
+
+        if (!bookshelf.hasBooks()) {
+            throw new IllegalArgumentException("На полке книг нет. Вы не можете удалять книги.");
+        }
+        if (chooseYes("Вы хотите удалить все книги с полки? ")) {
             bookshelf.clear();
         }
         bookshelf.printReport();
     }
-
 
     private boolean chooseYes(String message) {
         Scanner scan = new Scanner(System.in, CHARSET_NAME);
@@ -138,13 +134,5 @@ public class BookshelfMain {
             if (yesNo.trim().equalsIgnoreCase("нет")) return false;
         } while (!yesNo.trim().equalsIgnoreCase("да"));
         return true;
-    }
-
-    public static String leftString (String str, int num) {
-        return num > str.length() ? str : str.substring(0, num);
-    }
-
-    public static void printLine(String type) {
-        System.out.println(type.repeat(Book.INFO_LEN));
     }
 }
