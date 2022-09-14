@@ -1,14 +1,22 @@
 package com.startjava.graduation;
 
 public class Bookshelf {
-    private final int cellsNum = 10;
-    private Book[] books = new Book[cellsNum];
+    public final static int CELLS_NUM = 10;
+    private Book[] books = new Book[CELLS_NUM];
     private final int defaultSize = 50;
     private int size = defaultSize;
     private int booksNum = 0;
 
     Bookshelf() {
         addTestBooks();
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public Book[] getBooks() {
+        return books;
     }
 
     public void addBook(Book book) {
@@ -44,7 +52,7 @@ public class Bookshelf {
     }
 
     public boolean hasCells() {
-        return booksNum < cellsNum;
+        return booksNum < CELLS_NUM;
     }
 
     public void clear() {
@@ -52,27 +60,12 @@ public class Bookshelf {
         size = defaultSize;
     }
 
-    public void printReport() {
-        printLine("-");
-        for (int i = 0; i < cellsNum; i++) {
-            System.out.printf("| %2d %-" + (size + 4) + "s |\n", i + 1, books[i] != null ? books[i].toString() : "");
-        }
-        printLine("-");
-        printInfo();
-
-    }
-
-    public void printInfo() {
+    public String getInfo() {
         System.out.print("На полке " +  (booksNum > 0 ? booksNum : "нет") + " книг. ");
-        if (booksNum == cellsNum)
-            System.out.println("На полке места нет");
+        if (booksNum == CELLS_NUM)
+            return ("На полке места нет");
         else
-            System.out.println("Осталось места для " + (cellsNum - booksNum) + " книг.");
-//        printLine("-");
-    }
-
-    public void printLine(String type) {
-        System.out.println(type.repeat(size + 11));
+            return ("Осталось места для " + (CELLS_NUM - booksNum) + " книг.");
     }
 
     private void setSize() {

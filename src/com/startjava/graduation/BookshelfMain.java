@@ -6,24 +6,22 @@ import java.util.Scanner;
 public class BookshelfMain {
     private Bookshelf bookshelf = new Bookshelf();
     private static final byte MENU_EXIT = 6;
-//    private static final String CHARSET_NAME = "windows-1251";  // Консоль Idea
-    private static final String CHARSET_NAME = "cp866";         // Консоль Windows
+//    Scanner scan = new Scanner(System.in, "windows-1251"); // Консоль Idea
+    Scanner scan = new Scanner(System.in, "cp866"); // Консоль Idea
 
     public static void main(String[] args) {
         BookshelfMain bookshelfMain = new BookshelfMain();
 
         boolean exit = false;
-        bookshelfMain.bookshelf.printLine("*");
-        bookshelfMain.bookshelf.printReport();
-        while (!exit) {
-            bookshelfMain.bookshelf.printLine("*");
-            exit = bookshelfMain.runMenu();
+        bookshelfMain.printLine("*");
+        bookshelfMain.printReport();
+        bookshelfMain.printLine("*");
+        while  (!bookshelfMain.runMenu()) {
+            bookshelfMain.printLine("*");
         }
     }
 
     private boolean runMenu() {
-        Scanner scan = new Scanner(System.in, CHARSET_NAME);
-
         System.out.println("""
                 1 -> Добавить книгу
                 2 -> Удалить книгу
@@ -32,15 +30,16 @@ public class BookshelfMain {
                 5 -> Инфо
                 6 -> Выход
                 """);
-        bookshelf.printLine("-");
+        printLine("-");
 
-        byte menuItem = 0;
+        byte menuItem;
         System.out.print("Выберите пункт меню: ");
         try {
             menuItem = scan.nextByte();
-            menuItem = menuItem < 0 || menuItem > MENU_EXIT ? 0 : menuItem;
+            scan.nextLine();
         } catch (InputMismatchException e) {
-            menuItem = 0;
+            scan.nextLine();
+            return false;
         }
 
         try {
@@ -48,8 +47,8 @@ public class BookshelfMain {
                 case 1 -> addBook();
                 case 2 -> deleteBook();
                 case 3 -> clear();
-                case 4 -> bookshelf.printReport();
-                case 5 -> bookshelf.printInfo();
+                case 4 -> printReport();
+                case 5 -> printInfo();
                 case MENU_EXIT -> {
                     return true;
                 }
@@ -60,16 +59,12 @@ public class BookshelfMain {
         return false;
     }
 
-    public void addBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, CHARSET_NAME);
-
+    public void addBook() {
         if (!bookshelf.hasCells()) {
             throw new IllegalArgumentException("На полке места нет. Вы не можете добавлять книги.");
         }
 
         Book book = new Book();
-        bookshelf.printReport();
-        bookshelf.printLine("-");
         System.out.println("Новая книга");
         System.out.print("Наименование : ");
         book.setName(scan.nextLine());
@@ -78,6 +73,7 @@ public class BookshelfMain {
         System.out.print("Год          : ");
         try {
             book.setYear(scan.nextInt());
+            scan.nextLine();
         } catch (InputMismatchException e) {
             System.out.println("Ошибка: Год книги введён неверно");
             return;
@@ -85,14 +81,10 @@ public class BookshelfMain {
         if (chooseYes("Добавить книгу?")) {
             bookshelf.addBook(book);
         }
-        bookshelf.printReport();
+        printReport();
     }
 
-    private void deleteBook() throws IllegalArgumentException {
-        Scanner scan = new Scanner(System.in, CHARSET_NAME);
-
-        bookshelf.printReport();
-        bookshelf.printLine("-");
+    private void deleteBook() {
         System.out.println("Удаление книги");
         System.out.print("Наименование : ");
 
@@ -109,24 +101,20 @@ public class BookshelfMain {
         if (chooseYes("Удалить книгу " + "\"" + name + "\"" + "?")) {
             bookshelf.deleteBook(name);
         }
-        bookshelf.printReport();
+        printReport();
     }
 
-    public void clear() throws IllegalArgumentException {
-        bookshelf.printReport();
-        bookshelf.printLine("-");
-
+    public void clear() {
         if (!bookshelf.hasBooks()) {
             throw new IllegalArgumentException("На полке книг нет. Вы не можете удалять книги.");
         }
         if (chooseYes("Вы хотите удалить все книги с полки? ")) {
             bookshelf.clear();
         }
-        bookshelf.printReport();
+        printReport();
     }
 
     private boolean chooseYes(String message) {
-        Scanner scan = new Scanner(System.in, CHARSET_NAME);
         String yesNo;
         do {
             System.out.print(message + " [да / нет]: ");
@@ -134,5 +122,23 @@ public class BookshelfMain {
             if (yesNo.trim().equalsIgnoreCase("нет")) return false;
         } while (!yesNo.trim().equalsIgnoreCase("да"));
         return true;
+    }
+
+    private void printReport() {
+        printLine("-");
+        for (int i = 0; i < Bookshelf.CELLS_NUM; i++) {
+            System.out.printf("| %2d %-" + (bookshelf.getSize() + 4) + "s |\n", i + 1,
+                    bookshelf.getBooks()[i] != null ? bookshelf.getBooks()[i].toString() : "");
+        }
+        printInfo();
+    }
+
+    private void printInfo() {
+        printLine("-");
+        System.out.println(bookshelf.getInfo());
+    }
+
+    private void printLine(String type) {
+        System.out.println(type.repeat(bookshelf.getSize() + 11));
     }
 }
