@@ -40,15 +40,15 @@ public class Bookshelf {
         }
     }
 
+    public boolean hasBook() {
+        return booksNum > 0;
+    }
+
     public boolean hasBook(String name) {
         for (int i = 0; i < booksNum; i++) {
             if (books[i].getName().equals(name)) return true;
         }
         return false;
-    }
-
-    public boolean hasBooks() {
-        return booksNum > 0;
     }
 
     public boolean hasCells() {
